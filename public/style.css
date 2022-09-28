@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+}
+
+body {
+  position: relative;
+  background-color:rgb(29, 29, 29)
+}
+
+#header {
+  position: absolute;
+  width: 100%;
+  padding: 3vh 5vw 0vh 5vw;
+  display: flex;
+  align-items: center;
+  place-content: space-between;
+}
+
+#header img {
+  cursor: pointer;
+  width: 15vh;
+}
+
+.icon::before {
+  display: inline-block;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.right-navbar {
+  color: white;
+}
+
+#header .right-navbar i {
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+#hero-section {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 2vh 5vw 2vh 5vw;
+  display: grid;
+  grid-template-rows: auto;
+  row-gap: 1rem;
+  height: 60vh;
+  place-content: center start;
+
+  color: rgb(250, 250, 250);
+  background-color: rgba(0,0,0,0.6);
+  background-blend-mode: multiply;
+
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#hero-section p {
+  width: 45%;
+  text-align: justify;
+}
+
+#hero-section button {
+  cursor: pointer;
+  padding: 1rem 1.5rem 1rem 1.5rem;
+  font-weight: 800;
+  border: 0;
+  border-radius: 3px;
+  color:rgb(29, 29, 29)
+}
+
+#hero-section button:nth-child(1) {
+  margin-right: 0.5rem;
+}
+
+#hero-section button:hover, #header .right-navbar i:hover {
+  opacity: 0.9;
+}
+
+#hero-section #watch-trailer {
+  background-color: rgb(151, 22, 22);
+  color: #fff;
+}
+
+#hero-section #watch-trailer::before {
+  font: var(--fa-font-solid);
+  content: "\f04b";
+  padding-right: 3px;
+}
+
+#hero-section #add-to-list::before {
+  font: var(--fa-font-solid);
+  content: "\2b";
+  padding-right: 3px;
+}
+
+.trending-now-container {
+  position: relative;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  padding-top: 6vh;
+}
+
+.trending-now-container h3 {
+  color:rgb(201, 201, 201);
+  cursor: default;
+}
+
+.trending-now-container h3::after {
+  font: var(--fa-font-solid);
+  content: "\f061";
+  padding-left: 0.7rem;
+}
+
+.trending-now-container .arrow {
+  z-index: 1;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, 50%);
+  color: rgba(158, 158, 158, 0.8);
+  transition: color ease-out 1s;
+}
+
+.trending-now-container .fa-chevron-right {
+  right: 2vw;
+}
+
+.trending-now-container .fa-chevron-left {
+  left: 2vw;
+}
+
+.trending-now-container .arrow:hover {
+  color: rgba(158, 158, 158, 0.6);
+  transition: color ease-in 1s;
+}
+
+.trending-now-container .slider {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 1fr;
+  grid-auto-rows: 0;
+  column-gap: 0.7rem;
+  padding-top: 1rem;
+  overflow: hidden;
+}
+
+.trending-now-container .slider div {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  cursor: pointer;
+  color: rgb(250, 250, 250);
+  background-color: rgba(0,0,0,0.3);
+  background-blend-mode: multiply;
+  transition: ease-out 0.2s;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  height: 30vh;
+  width: 12vw;
+
+  position: relative;
+  display: flex;
+  align-items: end;
+}
+
+.trending-now-container .slider div:hover {
+  background-color: rgba(0,0,0,0.4);
+  transition: ease-in 0.2s;
+}
+
+.trending-now-container .slider div h4 {
+  display: block;
+  width: 100%;
+  position: absolute;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+
+  background-color: rgba(0, 0, 0, 0.4)
+}
+
+#footer {
+  margin-top: 8vh;
+  position: absolute;
+  width: 100%;
+  padding: 3vh 5vw 3vh 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color:rgb(16, 16, 16);
+  height: max-content;
+}
+
+#footer img {
+  cursor: pointer;
+  width: 20vh;
+}
+
+#footer .footer-menu {
+  display: flex;
+  width: 40vw;
+  justify-content: space-between;
+}
+
+#footer h5 {
+  font-size: 1rem;
+  padding-bottom: 1rem;
+}
+
+#footer .footer-menu li {
+  cursor: pointer;
+  list-style: none;
+  padding-bottom: 0.5rem;
+}
+
+#footer .footer-menu li:hover {
+  opacity: 0.9;
+}
