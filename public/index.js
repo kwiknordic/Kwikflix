@@ -1,3 +1,6 @@
-import { conf } from "./src/api/conf.js"
+import * as header from "./src/hero-section/controller.js"
+import * as slider from "./src/sliders/controller.js"
 
-console.log(conf)
+header.init()
+slider.initSliderOne()
+slider.initSliderTwo()

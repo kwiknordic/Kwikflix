@@ -1,12 +1,24 @@
+export const configuration = {
+  main: "/configuration",
+  lang: "/configuration/languages"
+}
 
+export const movies = {
+  rootDir: "/movie",
+  topRated: "/top_rated",
+}
 
-const endpoints = { 
-  get conf() { return "/configuration" },
-  confLang: "/configuration/languages",
-  topRated: "/movie/top_rated",
-  trending: {
-    movie: "/trending/movie/week",
-    tv: "/trending/tv/week",
-  },
+export const trending = {
+  rootDir: "/trending",
+  movies: "/movie",
+  tv: "/tv",
+}
+
+export const extra = {
   videos: "/videos",
+  reviews: "/reviews",
+  similar: "/similar",
+  keywords: "/keywords",
+  release: "/release_dates",
+  external: "/external_ids"
 }
