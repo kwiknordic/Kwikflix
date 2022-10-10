@@ -1,18 +1,21 @@
+import { showTrailerModal } from "../helpers/showTrailer.js"
+
 export function render(dataObj) {
 
   addBackgroundPic(dataObj)
   addTextContent(dataObj)
   addId(dataObj.id)
-  addTrailer(dataObj.videos)
+  getTrailer(dataObj)
 }
 
 let container = document.querySelector("#hero-section")
 
-function addTrailer(videos) {
-  let youtubeURL = "https://www.youtube.com/watch?v="
+function getTrailer({ videos }) {
+  let youtubeURL = "https://www.youtube-nocookie.com/embed/"
 
   let video = videos
     .filter(video => {
+
       if (video.site != "YouTube") return;
       if (video.iso_639_1 != "en") return;
       if (video.type != "Trailer") return;
@@ -24,8 +27,9 @@ function addTrailer(videos) {
 
   let button = container.querySelector("#watch-trailer")
   let linkElem = button.parentElement
-  linkElem.href = youtubeURL + video[chooseRandom]
-  linkElem.target = "_blank"
+  linkElem.addEventListener("click", e => {
+    showTrailerModal(youtubeURL + video[chooseRandom])
+  })
 
   return button.parentElement
 }
