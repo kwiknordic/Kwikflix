@@ -5,21 +5,32 @@ import { cache } from "../cache.js"
 let { API_KEY, url } = config.base
 let { pageQuery: page, langQuery: lang } = config.base
 
+// insert "self" as detail to search for unique IDs
 async function searchLists(id, node, detail) {
   if (!id || !node) throw Error("Node or endpoint is not correct")
   if (typeof id != "number") return;
 
   let root = endpoints[node].rootDir
   let endpoint = endpoints["extra"][detail]
-  
-  if (detail == "self") endpoint = id
+  let response;
 
-  let response = await fetch(url + 
-                             root + 
-                             "/" + id +
-                             endpoint +
-                             API_KEY + 
-                             lang)
+  if (detail == "self") {
+
+    response = await fetch(url + 
+                           root + 
+                           "/" +
+                           id +
+                           API_KEY + 
+                           lang)
+  } else {
+
+    response = await fetch(url + 
+                           root + 
+                           "/" + id +
+                           endpoint +
+                           API_KEY + 
+                           lang)
+  }
 
   if (!response.ok) throw Error("Response is not ok")
   return response.json()

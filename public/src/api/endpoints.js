@@ -8,6 +8,11 @@ export const movies = {
   topRated: "/top_rated",
 }
 
+export const tv = {
+  rootDir: "/tv",
+  topRated: "/top_rated",
+}
+
 export const trending = {
   rootDir: "/trending",
   movies: "/movie",

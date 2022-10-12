@@ -1,3 +1,5 @@
+import { renderDetails } from "./controller.js"
+
 let container = document.querySelectorAll(".trending-now-container")
 
 export async function renderSlider(sliderNum, data) {
@@ -36,6 +38,11 @@ export async function renderSlider(sliderNum, data) {
       "original_title"
     
     title.textContent = entry[originalTitle]
+
+    // request detailed-page if clicked
+    newSlide.addEventListener("click", e => {
+      renderDetails(e.target.id)
+    })
 
     slider.append(newSlide)
     newSlide.append(title)

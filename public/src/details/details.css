@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+}
+
+body {
+  position: relative;
+  background-color:rgb(29, 29, 29)
+}
+
+#header {
+  position: relative;
+  width: 100%;
+  padding: 3vh 5vw 0vh 5vw;
+  display: flex;
+  align-items: center;
+  place-content: space-between;
+  margin-bottom: 2rem;
+}
+
+#header img {
+  cursor: pointer;
+  width: 15vh;
+}
+
+.icon::before {
+  display: inline-block;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.right-navbar {
+  color: white;
+}
+
+#header .right-navbar i {
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+/* main {
+  height: 50vh;
+  width: 80vw;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+} */
+
+main {
+  height: 80vh;
+  width: 90vw;
+  margin: auto;
+  display: grid;
+  grid-template-columns: auto 4fr;
+  column-gap: 1rem;
+  align-items: start;
+}
+
+main .poster {
+  width: 30vw;
+  height: 80%;
+  background-position: right; 
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: 1px;
+}
+
+article {
+  display: grid;
+  grid-template-rows: auto;
+  grid-gap: 1rem;
+}
+
+article .heading {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  row-gap: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+article .buttons button {
+  cursor: pointer;
+  padding: 1rem 1.5rem 1rem 1.5rem;
+  font-weight: 800;
+  border: 0;
+  border-radius: 3px;
+  color:rgb(29, 29, 29)
+}
+
+article .buttons button:nth-child(1) {
+  margin-right: 0.5rem;
+}
+
+article .buttons button:hover, #header .right-navbar i:hover {
+  opacity: 0.9;
+}
+
+article .buttons #watch-trailer {
+  background-color: rgb(151, 22, 22);
+  color: #fff;
+}
+
+article .buttons #watch-trailer::before {
+  font: var(--fa-font-solid);
+  content: "\f04b";
+  padding-right: 0.5rem;
+}
+
+article .buttons #add-to-list::before {
+  font: var(--fa-font-solid);
+  content: "\2b";
+  padding-right: 0.5rem;
+}
+
+article .heading .ratings span {
+  display: block;
+}
+
+article p {
+  width: 80%;
+}
