@@ -1,5 +1,6 @@
 import { data } from "./model.js"
 
+let pageTitle = document.head.querySelector("title")
 let posterElem = document.querySelector(".poster")
 let mainElem = document.querySelector("article")
 
@@ -21,6 +22,7 @@ function addTextContent({ title, overview, rating, count, releaseDate, runTime, 
   // add title
   let titleElem = heading.querySelector("h1")
   titleElem.textContent = title
+  pageTitle.textContent = title
 
   // add overview
   let overviewElem = mainElem.querySelector("p")
@@ -44,11 +46,9 @@ function addTextContent({ title, overview, rating, count, releaseDate, runTime, 
 
   // populate with genres
   let genresElem = mainElem.querySelector("#genres")
-  genres.forEach( genre => {
-    genres.at(-1) == genre ?
-      genresElem.textContent += genre.name :
-      genresElem.textContent += genre.name + ", "
-  })
+  genres = genres.map(genre => genre.name)
+  const formatter = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
+  genresElem.textContent += formatter.format(genres)
 
   return { titleElem, overviewElem }
 }

@@ -7,14 +7,20 @@
     <title>Kwikflix</title>
     <script src="https://kit.fontawesome.com/3cc19dad8c.js" crossorigin="anonymous"></script>
     <script src="./index.js" type="module"></script>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./src/css/universal.css">
+    <link rel="stylesheet" href="./src/css/index.css">
     <!-- Favicon below -->
     <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAgID/ALq6/wBlZfwAAwOWAAAArQAAALUAAACrAAAA6wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGZgKIgAAAAAZmAoiAAAAABmYBiIAAAAAGZhiIgAAAAAZmOIiAAAAABmaIiFAAAAAGZYiIUAAAAAZliIVgAAAABliIhWAAAAAGWIhWYAAAAAWIg3ZgAAAABYgQRmAAAAAIiBBGYAAAAAiIIEZgAAAAAAAAAAAAD//wAA8Q8AAPEPAADxDwAA8A8AAPAPAADwDwAA8A8AAPAPAADwDwAA8A8AAPAPAADwjwAA8I8AAPCPAAD//wAA" rel="icon" type="image/x-icon" />
 </head>
 
 <body>
+
+  <!-- Has to be loaded after body-tag -->
+  <script src="./src/helpers/loading-icon.js"></script>
+  <!-- Hides body-tag while loading -->
+
     <header id="header">
-        <img src="https://fontmeme.com/permalink/220919/f2744ab2356cec4e4dd8e286d2fa8ae0.png" alt="Kwik">
+    <a href="./"><img src="https://fontmeme.com/permalink/220919/f2744ab2356cec4e4dd8e286d2fa8ae0.png" alt="Kwik"></a>
         <div class="right-navbar">
             <i class="fa-solid fa-magnifying-glass fa-lg"></i>
             <i class="fa-solid fa-bell fa-lg"></i>
@@ -27,10 +33,8 @@
       <h2></h2>
       <p></p>
       <div class="buttons">
-        <a href="#">
-          <button id="watch-trailer">Watch trailer</button></a>
-        <a href="#">
-          <button id="add-to-list">My list</button></a>
+          <button id="watch-trailer">Watch trailer</button>
+          <button id="add-to-list">My list</button>
       </div>
     </div>
 
@@ -74,7 +78,6 @@
         </div>
     </div>
 </footer>
-
 
 <template id="template-modal-trailerView">
     <div id="modal-trailerView">
