@@ -1,10 +1,16 @@
 import { searchLists, getImgProps } from "../api/getResponse.js"
 
-let id = Number(localStorage.getItem("detailReq"))
+let reqData = JSON.parse(localStorage.reqData)
+let id = Number(reqData.id)
+let media = reqData.media
 
-let response = await searchLists(id, "movies", "self")
+let response;
+if (media == "movie") response = await searchLists(id, "movies", "self")
+else response = await searchLists(id, "tv", "self")
+
 let imgProps = await getImgProps()
 
+// TODO: data below is not valid for series (check: release, runtime)
 export const data = {
   id: response.id,
   title: response.title,

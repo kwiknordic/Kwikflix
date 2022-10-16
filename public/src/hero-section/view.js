@@ -26,12 +26,11 @@ function getTrailer({ videos }) {
   let chooseRandom = Math.floor(Math.random() * video.length)
 
   let button = container.querySelector("#watch-trailer")
-  let linkElem = button.parentElement
-  linkElem.addEventListener("click", e => {
+  button.addEventListener("click", e => {
     showTrailerModal(youtubeURL + video[chooseRandom])
   })
 
-  return button.parentElement
+  return button
 }
 
 function addId(id) {

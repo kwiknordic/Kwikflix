@@ -13,6 +13,8 @@ body {
   background-color:rgb(29, 29, 29)
 }
 
+/* Header CSS */
+
 #header img {
   cursor: pointer;
   width: 15vh;
@@ -37,4 +39,46 @@ body {
   100% {
       transform: rotate(360deg);
   }
+}
+
+/* Footer CSS */
+
+#footer {
+  margin-top: 8vh;
+  position: absolute;
+  width: 100%;
+  padding: 3vh 5vw 3vh 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-shadow: 0 4px 8px 0 rgb(37, 37, 37), 0 6px 20px 0 rgba(0, 0, 0);
+  background-color:rgb(16, 16, 16);
+  height: max-content;
+}
+
+#footer img {
+  cursor: pointer;
+  width: 20vh;
+}
+
+#footer .footer-menu {
+  display: flex;
+  width: 40vw;
+  justify-content: space-between;
+}
+
+#footer h5 {
+  font-size: 1rem;
+  padding-bottom: 1rem;
+}
+
+#footer .footer-menu li {
+  cursor: pointer;
+  list-style: none;
+  padding-bottom: 0.5rem;
+}
+
+#footer .footer-menu li:hover {
+  opacity: 0.9;
 }

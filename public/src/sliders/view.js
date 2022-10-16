@@ -21,10 +21,12 @@ export async function renderSlider(sliderNum, data) {
   let slider = container[sliderNum].querySelector(".slider")
 
   list.forEach( (entry, index) => {
+    // jump over first movie-result; is shown in hero-section
     if (index == 0 && entry.media_type == "movie") return;
 
     let newSlide = document.createElement("div")
     newSlide.id = entry.id
+    newSlide.dataset.media = entry.media_type
     newSlide.style.backgroundImage = `url("${imgURL}${imgSize}${entry.backdrop_path}"`
 
     // add title
@@ -41,10 +43,10 @@ export async function renderSlider(sliderNum, data) {
 
     // request detailed-page if clicked
     newSlide.addEventListener("click", e => {
-      renderDetails(e.target.id)
+      renderDetails(e.target.id, e.target.dataset.media)
     })
 
-    slider.append(newSlide)
     newSlide.append(title)
+    slider.append(newSlide)
   })
 }
