@@ -1,4 +1,4 @@
-import { getLists, searchLists, getImgProps } from "../api/getResponse.js"
+import { getLists, searchLists, getImgProps } from "../../api/getResponse.js"
 //import * as helper from "../helper.js"
 
 // Get image-meta data

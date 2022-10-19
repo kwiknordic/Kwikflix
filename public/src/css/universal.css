@@ -13,6 +13,10 @@ body {
   background-color:rgb(29, 29, 29)
 }
 
+hr {
+  color: darkgray;
+}
+
 /* Header CSS */
 
 #header img {
@@ -45,38 +49,70 @@ body {
 
 #footer {
   margin-top: 8vh;
-  position: absolute;
-  width: 100%;
+  position: relative;
   padding: 3vh 5vw 3vh 5vw;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-
+  flex-direction: column;
   box-shadow: 0 4px 8px 0 rgb(37, 37, 37), 0 6px 20px 0 rgba(0, 0, 0);
   background-color:rgb(16, 16, 16);
   height: max-content;
 }
 
 #footer img {
-  cursor: pointer;
-  width: 20vh;
+  display: none;
 }
 
 #footer .footer-menu {
   display: flex;
-  width: 40vw;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
-#footer h5 {
+@media (min-width: 768px) {
+  #footer {
+    flex-direction: row;
+    padding: 3vh 5vw 3vh 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  #footer img {
+    display: unset;
+      cursor: pointer;
+      width: 20vh;
+    }
+
+  #footer .footer-menu {
+    display: flex;
+    flex-direction: row;
+    width: 40vw;
+    justify-content: space-between;
+  }
+
+  #footer summary::marker {
+    content: "";
+  }
+
+  #footer hr {
+    display: none;
+  }
+}
+
+#footer summary {
   font-size: 1rem;
-  padding-bottom: 1rem;
+  font-weight: 800;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 #footer .footer-menu li {
   cursor: pointer;
   list-style: none;
   padding-bottom: 0.5rem;
+}
+
+#footer .footer-menu li a {
+  text-decoration: none;
 }
 
 #footer .footer-menu li:hover {

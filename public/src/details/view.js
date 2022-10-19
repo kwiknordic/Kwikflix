@@ -1,22 +1,21 @@
-import { data } from "./model.js"
-
 let pageTitle = document.head.querySelector("title")
 let posterElem = document.querySelector(".poster")
 let mainElem = document.querySelector("article")
 
-//view
-addBackgroundPic(data)
-function addBackgroundPic({ imgSizes, imgURL, poster }) {
+function addBackgroundPic({ title, imgSizes, imgURL, poster }) {
+  let imgElem = posterElem.querySelector("img")
+
+  // imgsize, TODO: use different sizes depending on media-screen
   let imgSize = imgSizes.at(-1)
 
-  //posterElem.src = `${imgURL}${imgSize}${poster}`
-  posterElem.style.backgroundImage = `url("${imgURL}${imgSize}${poster}"`
-  return posterElem
+  imgElem.src = `${imgURL}${imgSize}${poster}`
+  imgElem.alt = title
+
+  //posterElem.style.backgroundImage = `url("${imgURL}${imgSize}${poster}"`
+  return imgElem
 }
 
-addTextContent(data)
 function addTextContent({ title, overview, rating, count, releaseDate, runTime, genres }) {
-
   let heading = mainElem.querySelector(".heading")
 
   // add title
@@ -33,8 +32,8 @@ function addTextContent({ title, overview, rating, count, releaseDate, runTime, 
   let ratingElem = ratingsDiv.querySelector("#rating")
   let countElem = ratingsDiv.querySelector("#count")
 
-  ratingElem.textContent = rating
-  countElem.textContent = `(${count} votes)`
+  ratingElem.outerHTML = addRatingStars(rating)
+  countElem.textContent = `${count} votes`
 
   // add subheading (runtime, release)
   let subHeader = mainElem.querySelector(".subheading")
@@ -52,3 +51,19 @@ function addTextContent({ title, overview, rating, count, releaseDate, runTime, 
 
   return { titleElem, overviewElem }
 }
+
+function addRatingStars(ratingValue) {
+  let value = Math.floor(ratingValue / 2)
+  let star = "&#9733;"
+  let placeholder = "&#9734;"
+
+  let starRating = new Array(value).fill(star)
+
+  while (starRating.length < 5) {
+    starRating.push(placeholder)
+  } 
+
+  return starRating.join("")
+}
+
+export { addBackgroundPic, addTextContent }

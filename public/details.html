@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Details</title>
-  <script src="./src/details/details.js" type="module"></script>
+  <script src="./src/details/controller.js" type="module"></script>
   <script src="https://kit.fontawesome.com/3cc19dad8c.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="./src/css/universal.css">
   <link rel="stylesheet" href="./src/css/details.css">
@@ -27,7 +27,8 @@
 </header>
 
 <main>
-  <aside class="poster"></aside>
+
+  <aside class="poster"><img></aside>
   <!-- <img class="poster"> -->
 
   <article>
@@ -35,13 +36,13 @@
       <h1>Title</h1>
       <div class="ratings">
         <span id="rating"></span>
-        <span id="count"></span>
+        <em id="count" style="display: block; font-size: 0.8rem; color: darkgrey"></em>
       </div>
     </div>
     
     <div class="subheading">
       <span id="release"></span>
-      <span style="color: grey">|</span>
+      <span style="color: darkgrey">|</span>
       <span id="runtime"></span>
     </div>
 
@@ -62,33 +63,6 @@
 <footer id="footer">
   <img src="https://fontmeme.com/permalink/220919/f2744ab2356cec4e4dd8e286d2fa8ae0.png" alt="Kwik">
   <div class="footer-menu">
-      <div>
-          <h5>Footer #1</h5>
-          <ul>
-              <li>About us</li>
-              <li>Terms & Conditions</li>
-              <li>Contact us</li>
-              <li>Career</li>
-          </ul>
-      </div>
-      <div>
-          <h5>Footer #2</h5>
-          <ul>
-              <li>About us</li>
-              <li>Terms & Conditions</li>
-              <li>Contact us</li>
-              <li>Career</li>
-          </ul>
-      </div>
-      <div>
-          <h5>Footer #3</h5>
-          <ul>
-              <li>About us</li>
-              <li>Terms & Conditions</li>
-              <li>Contact us</li>
-              <li>Career</li>
-          </ul>
-      </div>
   </div>
 </footer>
 
