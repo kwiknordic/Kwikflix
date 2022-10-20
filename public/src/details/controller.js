@@ -5,6 +5,7 @@ import * as footer from "../footer/controller.js"
 function init() {
   view.addBackgroundPic(data)
   view.addTextContent(data)
+  view.getTrailer(data.videos)
   footer.init()
 }
 

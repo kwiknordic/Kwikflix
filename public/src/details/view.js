@@ -1,6 +1,12 @@
+import { getTrailer as getTrailerHelper } from "../helpers/showTrailer.js"
+
 let pageTitle = document.head.querySelector("title")
 let posterElem = document.querySelector(".poster")
 let mainElem = document.querySelector("article")
+
+function getTrailer(videos) {
+  getTrailerHelper(mainElem, videos)
+}
 
 function addBackgroundPic({ title, imgSizes, imgURL, poster }) {
   let imgElem = posterElem.querySelector("img")
@@ -11,7 +17,6 @@ function addBackgroundPic({ title, imgSizes, imgURL, poster }) {
   imgElem.src = `${imgURL}${imgSize}${poster}`
   imgElem.alt = title
 
-  //posterElem.style.backgroundImage = `url("${imgURL}${imgSize}${poster}"`
   return imgElem
 }
 
@@ -40,8 +45,9 @@ function addTextContent({ title, overview, rating, count, releaseDate, runTime, 
   let releaseElem = subHeader.querySelector("#release")
   let runtimeElem = subHeader.querySelector("#runtime")
 
-  releaseElem.textContent = `Release date: ${releaseDate}`
-  runtimeElem.textContent = `Runtime: ${runTime} minutes`
+  // TODO: code "N/A" as fallback
+  releaseElem.textContent = `${releaseDate}`
+  runtimeElem.textContent = `${runTime} minutes`
 
   // populate with genres
   let genresElem = mainElem.querySelector("#genres")
@@ -66,4 +72,4 @@ function addRatingStars(ratingValue) {
   return starRating.join("")
 }
 
-export { addBackgroundPic, addTextContent }
+export { addBackgroundPic, addTextContent, getTrailer }

@@ -9,7 +9,7 @@
   <script src="https://kit.fontawesome.com/3cc19dad8c.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="./src/css/universal.css">
   <link rel="stylesheet" href="./src/css/details.css">
-  <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAgID/ALq6/wBlZfwAAwOWAAAArQAAALUAAACrAAAA6wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGZgKIgAAAAAZmAoiAAAAABmYBiIAAAAAGZhiIgAAAAAZmOIiAAAAABmaIiFAAAAAGZYiIUAAAAAZliIVgAAAABliIhWAAAAAGWIhWYAAAAAWIg3ZgAAAABYgQRmAAAAAIiBBGYAAAAAiIIEZgAAAAAAAAAAAAD//wAA8Q8AAPEPAADxDwAA8A8AAPAPAADwDwAA8A8AAPAPAADwDwAA8A8AAPAPAADwjwAA8I8AAPCPAAD//wAA" rel="icon" type="image/x-icon" />
+  <link href="./src/resources/favicon.ico" rel="icon" type="image/x-icon" />
 </head>
 <body>
   
@@ -18,7 +18,7 @@
   <!-- Hides body-tag while loading -->
 
   <header id="header">
-    <a href="./"><img src="https://fontmeme.com/permalink/220919/f2744ab2356cec4e4dd8e286d2fa8ae0.png" alt="Kwik"></a>
+    <a href="./"><img src="./src/resources/logo.png" alt="Kwik"></a>
     <div class="right-navbar">
         <i class="fa-solid fa-magnifying-glass fa-lg"></i>
         <i class="fa-solid fa-bell fa-lg"></i>
@@ -29,7 +29,6 @@
 <main>
 
   <aside class="poster"><img></aside>
-  <!-- <img class="poster"> -->
 
   <article>
     <div class="heading">
@@ -38,12 +37,11 @@
         <span id="rating"></span>
         <em id="count" style="display: block; font-size: 0.8rem; color: darkgrey"></em>
       </div>
-    </div>
-    
-    <div class="subheading">
-      <span id="release"></span>
-      <span style="color: darkgrey">|</span>
-      <span id="runtime"></span>
+      <div class="subheading">
+        <span style="color: darkgray">Release date: </span><span id="release"></span>
+        <span style="color: darkgrey">|</span>
+        <span style="color: darkgray">Runtime: </span><span id="runtime"></span>
+      </div>
     </div>
 
     <div class="buttons">
@@ -53,15 +51,16 @@
 
     <p>Overview</p>
 
-    <div id="genres">
-      Genres:
+    <div id="genres-wrapper">
+      <span style="color: darkgray">Genres: </span>
+      <span id="genres"></span>
     </div>
 
   </article>
 </main>
 
 <footer id="footer">
-  <img src="https://fontmeme.com/permalink/220919/f2744ab2356cec4e4dd8e286d2fa8ae0.png" alt="Kwik">
+  <img src="./src/resources/logo.png" alt="Kwik">
   <div class="footer-menu">
   </div>
 </footer>

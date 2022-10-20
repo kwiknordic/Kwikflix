@@ -7,10 +7,18 @@ let media = reqData.media
 let imgProps = await getImgProps()
 
 let response;
+let videoResponse;
 let data;
 
-if (media == "movie") response = await searchLists(id, "movies", "self")
-else response = await searchLists(id, "tv", "self")
+if (media == "movie") {
+  response = await searchLists(id, "movies", "self")
+  videoResponse = await searchLists(id, "movies", "videos")
+}
+else {
+  response = await searchLists(id, "tv", "self")
+  videoResponse = await searchLists(id, "tv", "videos")
+}
+
 
 data = {
   id: response.id,
@@ -25,6 +33,8 @@ data = {
 
   imgSizes: imgProps.imgSizes,
   imgURL: imgProps.imgURL,
+
+  videos: videoResponse.results
 }
 
 if (media == "movie") {
