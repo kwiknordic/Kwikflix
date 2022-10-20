@@ -1,5 +1,6 @@
-let footerElem = document.querySelector("#footer")
-let footerMenu = footerElem.querySelector(".footer-menu")
+let footer = document.querySelector("#footer")
+let footerMain = footer.querySelector(".main")
+let footerLinks = footerMain.querySelector(".footer-menu")
 
 function addLinks(menu) {
   for (let parent in menu) {
@@ -19,7 +20,7 @@ function addLinks(menu) {
       list.append(row)
     }
 
-    footerMenu.append(container)
+    footerLinks.append(container)
     container.append(title)
     container.append(list)
 
@@ -40,9 +41,16 @@ function makeResponsive() {
     // only have menu opened for bigger screens
     if (width < 768) return;
 
-    let allDetails = footerMenu.querySelectorAll("details")
+    let allDetails = footerMain.querySelectorAll("details")
     allDetails.forEach( detail => detail.setAttribute("open", ""))
   }
 }
 
-export { addLinks, makeResponsive }
+function copyRightPlaceholder() {
+  let container = document.createElement("span")
+  container.id = "footer-copyright"
+  container.textContent = "This product uses the TMDB API but is not endorsed or certified by TMDB."
+  footer.append(container)
+}
+
+export { addLinks, makeResponsive, copyRightPlaceholder }

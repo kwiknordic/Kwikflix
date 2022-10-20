@@ -5,10 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Details</title>
-  <script src="./src/details/controller.js" type="module"></script>
+  <script src="./src/list/controller.js" type="module"></script>
   <script src="https://kit.fontawesome.com/3cc19dad8c.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="./src/css/universal.css">
-  <link rel="stylesheet" href="./src/css/details.css">
+  <link rel="stylesheet" href="./src/css/list.css">
   <link href="./src/resources/favicon.ico" rel="icon" type="image/x-icon" />
 </head>
 <body>
@@ -20,45 +20,25 @@
   <header id="header">
     <div class="logo">
       <a href="./">Kwikflix</a>
-   </div>
+    </div>
     <div class="right-navbar">
         <i class="fa-solid fa-magnifying-glass fa-lg"></i>
         <a href="./list.html"><i class="fa-regular fa-user fa-lg"></i></a>
     </div>
 </header>
 
-<main>
-
-  <aside class="poster"><img></aside>
-
-  <article>
-    <div class="heading">
-      <h1>Title</h1>
-      <div class="ratings">
-        <span id="rating"></span>
-        <em id="count" style="display: block; font-size: 0.8rem; color: darkgrey"></em>
-      </div>
-      <div class="subheading">
-        <span style="color: darkgray">Release date: </span><span id="release"></span>
-        <span style="color: darkgrey">|</span>
-        <span style="color: darkgray">Runtime: </span><span id="runtime"></span>
-      </div>
-    </div>
-
-    <div class="buttons">
-        <button id="watch-trailer">Watch trailer</button></a>
-        <button id="add-to-list">My list</button></a>
-    </div>
-
-    <p>Overview</p>
-    <hr>
-    <div id="genres-wrapper">
-      <span style="color: darkgray">Genre: </span>
-      <span id="genres"></span>
-    </div>
-
-  </article>
-</main>
+<div class="wrapper">
+  <aside>
+    <h2>My list</h2>
+    <ul>
+      <li>All</li>
+      <li>To be seen</li>
+      <li>Archived</li>
+    </ul>
+  </aside>
+  
+  <main></main>
+</div>
 
 <footer id="footer">
   <div class="main">

@@ -1,11 +1,13 @@
 #header {
   position: relative;
   width: 100%;
-  padding: 3vh 5vw 0vh 5vw;
+  padding: 3vh 5vw 3vh 5vw;
   display: flex;
   align-items: center;
   place-content: space-between;
   margin-bottom: 2rem;
+  box-shadow: 0 0px 4px 0 rgb(37, 37, 37);
+  background-color:rgb(16, 16, 16);
 }
 
 main .poster {
@@ -27,46 +29,12 @@ article {
   max-width: 50em;
 }
 
+article .ratings {
+  cursor: default;
+}
+
 article .subheading {
   margin-top: 2rem;
-}
-
-article .buttons button {
-  cursor: pointer;
-  padding: 1rem 1.5rem 1rem 1.5rem;
-  font-weight: 800;
-  border: 0;
-  border-radius: 3px;
-  color:rgb(29, 29, 29)
-}
-
-article .buttons button:nth-child(1) {
-  margin-right: 0.5rem;
-}
-
-article .buttons button:hover, #header .right-navbar i:hover {
-  opacity: 0.9;
-}
-
-article .buttons #watch-trailer {
-  background-color: rgb(151, 22, 22);
-  color: #fff;
-}
-
-article .buttons #watch-trailer::before {
-  font: var(--fa-font-solid);
-  content: "\f04b";
-  padding-right: 0.5rem;
-}
-
-article .buttons #add-to-list::before {
-  font: var(--fa-font-solid);
-  content: "\2b";
-  padding-right: 0.5rem;
-}
-
-article .heading .ratings span {
-  display: block;
 }
 
 @media (min-width: 768px) {

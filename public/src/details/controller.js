@@ -6,6 +6,7 @@ function init() {
   view.addBackgroundPic(data)
   view.addTextContent(data)
   view.getTrailer(data.videos)
+  view.eventListeners(data)
   footer.init()
 }
 

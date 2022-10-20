@@ -17,12 +17,13 @@ hr {
   color: darkgray;
 }
 
-/* Header CSS */
-
-#header img {
-  cursor: pointer;
-  width: 15vh;
-}
+.logo a {
+  text-decoration: none;
+  font-size: 2rem;
+  background: url(../resources/logo.png) no-repeat 0 0;
+  background-size: contain;
+  color:rgba(0,0,0,0)
+  }
 
 .icon::before {
   display: inline-block;
@@ -39,6 +40,52 @@ hr {
   cursor: pointer;
 }
 
+/* Buttons */
+
+button {
+  cursor: pointer;
+  padding: 1rem 1.5rem 1rem 1.5rem;
+  font-weight: 800;
+  border: 0;
+  border-radius: 3px;
+  color:rgb(29, 29, 29)
+}
+
+button:nth-child(1) {
+  margin-right: 0.5rem;
+}
+
+button:hover, #header .right-navbar i:hover {
+  opacity: 0.9;
+}
+
+button#watch-trailer {
+  background-color: rgb(151, 22, 22);
+  color: rgb(250, 250, 250);
+}
+
+button#watch-trailer::before {
+  font: var(--fa-font-solid);
+  content: "\f04b";
+  padding-right: 0.5rem;
+}
+
+button#add-to-list::before {
+  font: var(--fa-font-solid);
+  content: "\2b";
+  padding-right: 0.5rem;
+}
+
+button#add-to-list:disabled {
+  cursor: default;
+  opacity: unset;
+}
+
+button#add-to-list:disabled::before {
+  content: "\f00c";
+  color: green;
+}
+
 @keyframes spin {
   100% {
       transform: rotate(360deg);
@@ -51,72 +98,82 @@ hr {
   margin-top: 8vh;
   position: relative;
   padding: 3vh 5vw 3vh 5vw;
-  display: flex;
-  flex-direction: column;
   box-shadow: 0 4px 0px 0 rgb(37, 37, 37);
   background-color:rgb(16, 16, 16);
   height: max-content;
 }
 
-#footer img {
-  display: none;
-}
-
-#footer .footer-menu {
+#footer .main {
   display: flex;
   flex-direction: column;
 }
 
-@media (min-width: 768px) {
-  #footer {
-    flex-direction: row;
-    padding: 3vh 5vw 3vh 5vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  #footer img {
-    display: unset;
-      cursor: pointer;
-      width: 20vh;
-    }
-
-  #footer .footer-menu {
-    display: flex;
-    flex-direction: row;
-    width: 40vw;
-    justify-content: space-between;
-  }
-
-  #footer summary::marker {
-    content: "";
-  }
-
-  #footer hr {
-    display: none;
-  }
+#footer .main img {
+  display: none;
 }
 
-#footer summary {
+#footer .main .footer-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+#footer .main summary {
   font-size: 1rem;
   font-weight: 800;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
 
-#footer .footer-menu li {
+#footer .main .footer-menu li {
   cursor: pointer;
   list-style: none;
   padding-bottom: 0.5rem;
 }
 
-#footer .footer-menu li a {
+#footer .main .footer-menu li a {
   text-decoration: none;
 }
 
-#footer .footer-menu li:hover {
+#footer .main .footer-menu li:hover {
   opacity: 0.9;
+}
+
+#footer #footer-copyright {
+  display: block;
+  color: darkgrey;
+  cursor: default;
+  font-size: 0.8rem;
+  padding-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  #footer .main {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  #footer .main img {
+    display: unset;
+      cursor: pointer;
+      width: 20vh;
+    }
+
+  #footer .main .footer-menu {
+    display: flex;
+    flex-direction: row;
+    width: 40vw;
+    justify-content: space-between;
+  }
+
+  #footer .main summary::marker {
+    content: "";
+  }
+
+  #footer #footer-copyright {
+    padding-top: unset;
+  }
 }
 
 /* Modal: trailer */

@@ -1,5 +1,4 @@
-import { getLists, searchLists, getImgProps } from "../../api/getResponse.js"
-//import * as helper from "../helper.js"
+import { getLists, getImgProps } from "../../api/getResponse.js"
 
 // Get image-meta data
 let imgProps = await getImgProps()

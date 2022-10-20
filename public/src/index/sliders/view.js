@@ -1,4 +1,4 @@
-import { renderDetails } from "./controller.js"
+import { renderDetails } from "../../helpers/renderDetails.js"
 
 let container = document.querySelectorAll(".trending-now-container")
 
@@ -23,6 +23,7 @@ export async function renderSlider(sliderNum, data) {
   list.forEach( (entry, index) => {
     // jump over first movie-result; is shown in hero-section
     if (index == 0 && entry.media_type == "movie") return;
+    if (!entry.backdrop_path) return;
 
     let newSlide = document.createElement("div")
     newSlide.id = entry.id

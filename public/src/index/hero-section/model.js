@@ -13,6 +13,7 @@ let videoResponse = await searchLists(firstResult.id, "movies", "videos")
 export const data = {
   id: firstResult.id,
   title: firstResult.title,
+  mediaType: firstResult.media_type,
   overview: firstResult.overview,
   backdrop: firstResult.backdrop_path,
 

@@ -1,8 +1,18 @@
 import { getTrailer as getTrailerHelper } from "../helpers/showTrailer.js"
+import { addRatingStars } from "../helpers/addRatingStars.js"
+import { saveEntry } from "../helpers/addToList.js"
 
 let pageTitle = document.head.querySelector("title")
 let posterElem = document.querySelector(".poster")
 let mainElem = document.querySelector("article")
+
+function eventListeners(dataObj) {
+  document.addEventListener("click", e => {
+    if (e.target.id !== "add-to-list") return;
+    saveEntry(dataObj.id, dataObj.mediaType)
+    e.target.disabled = "true"
+  })
+}
 
 function getTrailer(videos) {
   getTrailerHelper(mainElem, videos)
@@ -58,18 +68,4 @@ function addTextContent({ title, overview, rating, count, releaseDate, runTime, 
   return { titleElem, overviewElem }
 }
 
-function addRatingStars(ratingValue) {
-  let value = Math.floor(ratingValue / 2)
-  let star = "&#9733;"
-  let placeholder = "&#9734;"
-
-  let starRating = new Array(value).fill(star)
-
-  while (starRating.length < 5) {
-    starRating.push(placeholder)
-  } 
-
-  return starRating.join("")
-}
-
-export { addBackgroundPic, addTextContent, getTrailer }
+export { eventListeners, addBackgroundPic, addTextContent, getTrailer }

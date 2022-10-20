@@ -1,0 +1,66 @@
+#header {
+  position: relative;
+  width: 100%;
+  padding: 3vh 5vw 0vh 5vw;
+  display: flex;
+  align-items: center;
+  place-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding: 3vh 5vw 0vh 5vw;
+  gap: 2rem;
+}
+
+.wrapper main {
+  display: flex;
+  flex-direction: column;
+  place-content: space-between;
+  width: 100%;
+/*   border: 1px solid red; */
+}
+
+.wrapper aside {
+  flex-basis: calc(20%);
+  border-right: 1px solid red;
+}
+
+.wrapper aside h2 {
+  margin-bottom: 0.5rem;
+  cursor: default;
+}
+
+.wrapper aside li {
+  list-style: none;
+  padding-block: 0.3rem;
+}
+
+.wrapper main .item {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+}
+
+.wrapper main .item .heading {
+  display: flex;
+  align-items: center;
+}
+
+.wrapper main .item .heading .title {
+  padding-right: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.wrapper main hr {
+  margin-bottom: 1rem;
+}
+
+.wrapper main .divider {
+  padding-inline: 0.5rem;
+  color: darkgray;
+}

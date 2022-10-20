@@ -19,12 +19,12 @@ else {
   videoResponse = await searchLists(id, "tv", "videos")
 }
 
-
 data = {
+  mediaType: media,
+
   id: response.id,
   overview: response.overview,
   genres: response.genres,
-  imdbID: response.imdb_id,
   rating: response.vote_average,
   count: response.vote_count,
 
@@ -42,6 +42,7 @@ if (media == "movie") {
     title: response.original_title,
     releaseDate: response.release_date,
     runTime: response.runtime,
+    imdbID: response.imdb_id,
   }
 
   data = Object.assign({}, movieSpecificProps, data)
