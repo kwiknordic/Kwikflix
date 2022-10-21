@@ -26,8 +26,10 @@ export async function renderSlider(sliderNum, data) {
     if (!entry.backdrop_path) return;
 
     let newSlide = document.createElement("div")
-    newSlide.id = entry.id
+    newSlide.dataset.id = entry.id
     newSlide.dataset.media = entry.media_type
+    newSlide.dataset.linkForward = true
+
     newSlide.style.backgroundImage = `url("${imgURL}${imgSize}${entry.backdrop_path}"`
 
     // add title
@@ -41,11 +43,6 @@ export async function renderSlider(sliderNum, data) {
       "original_title"
     
     title.textContent = entry[originalTitle]
-
-    // request detailed-page if clicked
-    newSlide.addEventListener("click", e => {
-      renderDetails(e.target.id, e.target.dataset.media)
-    })
 
     newSlide.append(title)
     slider.append(newSlide)

@@ -8,6 +8,10 @@
   color: white;
 }
 
+[data-link-forward|="true"] {
+  cursor: pointer;
+}
+
 body {
   position: relative;
   background-color:rgb(29, 29, 29)

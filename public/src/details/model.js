@@ -3,21 +3,12 @@ import { searchLists, getImgProps } from "../api/getResponse.js"
 let reqData = JSON.parse(localStorage.reqData)
 let id = Number(reqData.id)
 let media = reqData.media
-
 let imgProps = await getImgProps()
-
 let response;
-let videoResponse;
 let data;
 
-if (media == "movie") {
-  response = await searchLists(id, "movies", "self")
-  videoResponse = await searchLists(id, "movies", "videos")
-}
-else {
-  response = await searchLists(id, "tv", "self")
-  videoResponse = await searchLists(id, "tv", "videos")
-}
+if (media == "movie") response = await searchLists(id, "movies", "self")
+if (media == "tv") response = await searchLists(id, "tv", "self")
 
 data = {
   mediaType: media,
@@ -33,8 +24,6 @@ data = {
 
   imgSizes: imgProps.imgSizes,
   imgURL: imgProps.imgURL,
-
-  videos: videoResponse.results
 }
 
 if (media == "movie") {

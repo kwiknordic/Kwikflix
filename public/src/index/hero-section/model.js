@@ -1,4 +1,4 @@
-import { getLists, searchLists, getImgProps } from "../../api/getResponse.js"
+import { getLists, getImgProps } from "../../api/getResponse.js"
 
 // Get highest trending result
 let response = await getLists("movies", "trending")
@@ -6,9 +6,6 @@ let firstResult = response.results[0]
 
 // Get image-meta data
 let imgProps = await getImgProps()
-
-// Get trailer of result above
-let videoResponse = await searchLists(firstResult.id, "movies", "videos")
 
 export const data = {
   id: firstResult.id,
@@ -19,6 +16,4 @@ export const data = {
 
   imgSizes: imgProps.imgSizes,
   imgURL: imgProps.imgURL,
-
-  videos: videoResponse.results
 }

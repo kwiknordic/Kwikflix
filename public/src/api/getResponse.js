@@ -15,22 +15,22 @@ async function searchLists(id, node, detail) {
   let response;
 
   if (detail == "self") {
-
-    response = await fetch(url + 
-                           root + 
-                           "/" +
-                           id +
-                           API_KEY + 
-                           lang)
+    response = await fetch(
+      url + 
+      root + 
+      "/" +
+      id +
+      API_KEY + 
+      lang)
   } else {
-
-    response = await fetch(url + 
-                           root + 
-                           "/" + id +
-                           endpoint +
-                           API_KEY + 
-                           lang)
-  }
+    response = await fetch(
+      url + 
+      root + 
+      "/" + id +
+      endpoint +
+      API_KEY + 
+      lang
+  )}
 
   if (!response.ok) throw Error("Response is not ok")
   return response.json()

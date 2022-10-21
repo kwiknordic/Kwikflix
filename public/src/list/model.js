@@ -1,12 +1,17 @@
 import { searchLists, getImgProps } from "../api/getResponse.js"
 
-let userList = JSON.parse(localStorage.userList)
+let userList;
 
-userList = userList.map( entry => {
-  return getEntry(entry.id, entry.media)
-})
+if (localStorage.userList) {
+  userList = JSON.parse(localStorage.userList)
+
+  userList = userList.map( entry => {
+    return getEntry(Number(entry.id), entry.media)
+  })
+}
 
 async function getEntry(id, media) {
+  if (!id || !media) return;
 
   let imgProps = await getImgProps()
 
@@ -18,7 +23,7 @@ async function getEntry(id, media) {
     response = await searchLists(id, "movies", "self")
     videoResponse = await searchLists(id, "movies", "videos")
   }
-  else {
+  if (media == "tv") {
     response = await searchLists(id, "tv", "self")
     videoResponse = await searchLists(id, "tv", "videos")
   }

@@ -1,4 +1,20 @@
-export function getTrailer(container, videos) {
+import { searchLists } from "../api/getResponse.js"
+
+export async function showTrailerModal(id, media) {
+  let template = trailerTemplate()
+  let content = template.content.firstElementChild
+  let response;
+
+  if (media === "movie") response = await searchLists(id, "movies", "videos")
+  if (media === "tv") response = await searchLists(id, "tv", "videos")
+  let videoPlayer = content.lastElementChild
+  videoPlayer.data = getTrailer(response.results)
+
+  let modal = template.content.cloneNode(true)
+  document.body.prepend(modal)
+}
+
+function getTrailer(videos) {
   let youtubeURL = "https://www.youtube-nocookie.com/embed/"
 
   let video = videos
@@ -12,37 +28,10 @@ export function getTrailer(container, videos) {
     .map(video => video.key)
 
   let randomPick = Math.floor(Math.random() * video.length)
-
-  let button = container.querySelector("#watch-trailer")
-  button.addEventListener("click", () => {
-    showTrailerModal(youtubeURL + video[randomPick])
-  })
-
-  return button
-}
-
-function showTrailerModal(url) {
-  let template = trailerTemplate()
-  let content = template.content.firstElementChild
-
-  let videoPlayer = content.lastElementChild
-  videoPlayer.data = url
-
-  let modal = template.content.cloneNode(true)
-  document.body.prepend(modal)
-
-  // Ability to close the modal
-  modal = document.querySelector("#modal-trailerView")
-
-  modal.addEventListener("click", e => {
-    if (e.target.classList.contains("embedded-video")) return;
-    e.target.closest("div").remove()
-  })
-  
+  return youtubeURL + video[randomPick]
 }
 
 function trailerTemplate() {
-
   let template = document.createElement("template")
   let content = document.createElement("div")
   content.id = "modal-trailerView"

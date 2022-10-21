@@ -7,7 +7,8 @@ function render({ id, title, rating, releaseDate, genres, mediaType }) {
   // TODO: Create a template of all this
 
   let entry = document.createElement("div")
-  entry.id = id
+  entry.dataset.id = id
+  entry.dataset.media = mediaType
   entry.classList.add("item")
 
   // heading
@@ -15,6 +16,7 @@ function render({ id, title, rating, releaseDate, genres, mediaType }) {
   headingElem.classList.add("heading")
 
   let titleElem = document.createElement("span")
+  headingElem.dataset.linkForward = "true"
   titleElem.classList.add("title")
   titleElem.textContent = title
 
@@ -23,7 +25,7 @@ function render({ id, title, rating, releaseDate, genres, mediaType }) {
 
   // sub-heading
   let subHeadingElem = document.createElement("div")
-  headingElem.classList.add("subheading")
+  subHeadingElem.classList.add("subheading")
 
   let releaseDateElem = document.createElement("span")
   releaseDateElem.textContent = `${releaseDate}`
