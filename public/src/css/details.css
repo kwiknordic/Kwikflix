@@ -17,7 +17,7 @@ main .poster {
 
 main .poster img {
   max-width: 100%;
-  max-height: 100%;
+  height: auto;
   border: 1px solid rgb(54, 54, 54);
 }
 
@@ -26,6 +26,9 @@ article {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+article p {
   max-width: 50em;
 }
 
@@ -43,6 +46,7 @@ article .subheading {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    gap: 1rem;
   }
 
   main .poster {

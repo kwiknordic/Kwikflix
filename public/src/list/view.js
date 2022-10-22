@@ -9,7 +9,16 @@ function render({ id, title, rating, releaseDate, genres, mediaType }) {
   let entry = document.createElement("div")
   entry.dataset.id = id
   entry.dataset.media = mediaType
-  entry.classList.add("item")
+  entry.classList.add("entry")
+
+  let details = document.createElement("div")
+  details.id = "details"
+
+  let sectionTwo = document.createElement("div")
+  let whatever = document.createElement("span")
+  whatever.textContent = "lalalala"
+
+  let sectionThree = document.createElement("div")
 
   // heading
   let headingElem = document.createElement("div")
@@ -45,9 +54,13 @@ function render({ id, title, rating, releaseDate, genres, mediaType }) {
   divider.textContent = "|"
 
   container.append(entry)
-  entry.append(headingElem)
-  entry.append(subHeadingElem)
-  entry.append(genresElem)
+  entry.append(details)
+  entry.append(sectionTwo)
+  entry.append(sectionThree)
+  details.append(headingElem)
+  details.append(subHeadingElem)
+  details.append(genresElem)
+  sectionTwo.append(whatever)
   headingElem.append(titleElem)
   headingElem.append(mediaElem)
   subHeadingElem.append(releaseDateElem)

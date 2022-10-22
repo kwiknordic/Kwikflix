@@ -34,10 +34,10 @@ function getTrailer(videos) {
 function trailerTemplate() {
   let template = document.createElement("template")
   let content = document.createElement("div")
-  content.id = "modal-trailerView"
+  content.classList.add("modalView")
 
   content.insertAdjacentHTML("afterbegin", `
-    <button class="close-modal">Close</button>
+    <i class="fa fa-close close"></i>
     <object class="embedded-video" type="video/mp4" data=""></object>
   `)
 

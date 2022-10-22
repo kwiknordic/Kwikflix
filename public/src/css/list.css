@@ -39,18 +39,24 @@
   padding-block: 0.3rem;
 }
 
-.wrapper main .item {
+.wrapper main .entry {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   padding-bottom: 1rem;
 }
 
-.wrapper main .item .heading {
+.wrapper main #details {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper main .entry .heading {
   display: flex;
   align-items: center;
 }
 
-.wrapper main .item .heading .title {
+.wrapper main .entry .heading .title {
   padding-right: 0.5rem;
   font-size: 1.2rem;
   font-weight: 600;
