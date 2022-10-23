@@ -1,7 +1,21 @@
+import { searchKeywords } from "../api/getResponse.js"
+import { renderSearch } from "./renderSearch.js"
+
 export function showTemplate() {
   let template = searchTemplate()
   let modal = template.content.cloneNode(true)
   document.body.prepend(modal)
+}
+
+export function submitSearch(element) {
+  let container = element.closest("div")
+  let input = container.querySelector("input")
+  let query = input.value
+
+  searchKeywords(query)
+    .then( results => {
+      renderSearch(results)
+    })
 }
 
 function searchTemplate() {

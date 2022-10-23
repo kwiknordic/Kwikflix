@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search results</title>
+  <script src="./src/search/controller.js" type="module"></script>
+  <script src="https://kit.fontawesome.com/3cc19dad8c.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./src/css/universal.css">
+  <link rel="stylesheet" href="./src/css/search.css">
+  <link href="./src/resources/favicon.ico" rel="icon" type="image/x-icon" />
+</head>
+<body>
+  
+  <!-- Has to be loaded after body-tag -->
+  <script src="./src/helpers/loading-icon.js"></script>
+  <!-- Hides body-tag while loading -->
+
+  <header id="header">
+    <div class="logo">
+      <a href="./">Kwikflix</a>
+    </div>
+    <div class="right-navbar">
+        <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+        <a href="./list.html"><i class="fa-regular fa-user fa-lg"></i></a>
+    </div>
+</header>
+
+<div class="wrapper">
+  <aside>
+    <h2>Filter</h2>
+    <ul>
+      <li class="all">All</li>
+      <li class="movies">Movies</li>
+      <li class="tv">TV</li>
+      <li class="people">People</li>
+    </ul>
+  </aside>
+  
+  <main></main>
+</div>
+
+<footer id="footer">
+  <div class="main">
+      <a href="./"><img src="./src/resources/logo.png" alt="Kwik"></a>
+      <div class="footer-menu">
+  </div>
+</footer>
+
+</body>
+</html>

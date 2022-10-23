@@ -19,7 +19,7 @@
 .wrapper main {
   display: flex;
   flex-direction: column;
-  place-content: space-between;
+/*   place-content: space-between; */
   width: 100%;
 /*   border: 1px solid red; */
 }
@@ -39,24 +39,24 @@
   padding-block: 0.3rem;
 }
 
-.entry {
+main .entry {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding-bottom: 1rem;
 }
 
-main #details {
+.wrapper main #details {
   display: flex;
   flex-direction: column;
 }
 
-.entry .heading {
+.wrapper main .entry .heading {
   display: flex;
   align-items: center;
 }
 
-.heading .title {
+.wrapper main .entry .heading .title {
   padding-right: 0.5rem;
   font-size: 1.2rem;
   font-weight: 600;
@@ -66,7 +66,7 @@ main #details {
   margin-bottom: 1rem;
 }
 
-main .divider {
+.wrapper main .divider {
   padding-inline: 0.5rem;
   color: darkgray;
 }

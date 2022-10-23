@@ -1,23 +1,25 @@
 import { addRatingStars } from "../helpers/addRatingStars.js"
 
 let container = document.querySelector("main")
+let aside = document.querySelector("aside")
 
-function render({ id, title, rating, releaseDate, genres, mediaType }) {
+function render({ id, title, rating, releaseDate, genres, media_type }) {
 
   // TODO: Create a template of all this
 
+  //console.log(id, title)
+
   let entry = document.createElement("div")
   entry.dataset.id = id
-  entry.dataset.media = mediaType
+  entry.dataset.media = media_type
   entry.classList.add("entry")
 
   let details = document.createElement("div")
   details.id = "details"
 
   let sectionTwo = document.createElement("div")
-  let archiveButton = document.createElement("button")
-  archiveButton.id = "archiveButton"
-  archiveButton.textContent = "Archive"
+  let whatever = document.createElement("span")
+  whatever.textContent = "lalalala"
 
   let sectionThree = document.createElement("div")
 
@@ -31,7 +33,7 @@ function render({ id, title, rating, releaseDate, genres, mediaType }) {
   titleElem.textContent = title
 
   let mediaElem = document.createElement("em")
-  mediaElem.textContent = `(${mediaType})`
+  mediaElem.textContent = `(${media_type})`
 
   // sub-heading
   let subHeadingElem = document.createElement("div")
@@ -41,14 +43,12 @@ function render({ id, title, rating, releaseDate, genres, mediaType }) {
   releaseDateElem.textContent = `${releaseDate}`
 
   let ratingElem = document.createElement("span")
-  ratingElem.innerHTML = addRatingStars(rating)
+  //ratingElem.innerHTML = addRatingStars(rating)
 
-  let genresElem = document.createElement("span")
+/*   let genresElem = document.createElement("span")
   genres = genres.map(genre => genre.name)
   const formatter = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
-  genresElem.textContent += formatter.format(genres)
-
-  let hr = document.createElement("hr")
+  genresElem.textContent += formatter.format(genres) */
 
   let divider = document.createElement("span")
   divider.classList.add("divider")
@@ -60,17 +60,15 @@ function render({ id, title, rating, releaseDate, genres, mediaType }) {
   entry.append(sectionThree)
   details.append(headingElem)
   details.append(subHeadingElem)
-  details.append(genresElem)
-  sectionTwo.append(archiveButton)
+  //details.append(genresElem)
+  sectionTwo.append(whatever)
   headingElem.append(titleElem)
   headingElem.append(mediaElem)
   subHeadingElem.append(releaseDateElem)
   subHeadingElem.append(divider.cloneNode(true))
   subHeadingElem.append(ratingElem)
-  
 }
 
-// TODO: add buttons [archive] to each entry so that we can try the filter
 function filter(attribute) {
   let entries = document.querySelectorAll(".entry")
   entries.forEach(entry => {
@@ -80,7 +78,7 @@ function filter(attribute) {
     console.log(entry, attribute)
     
     if (!attribute) return;
-    if (attribute !== entry.getAttribute("data-status")) entry.classList.add("hidden")
+    if (attribute !== entry.getAttribute("data-media")) entry.classList.add("hidden")
   })
 }
 

@@ -1,8 +1,8 @@
 import { renderDetails } from "../helpers/renderDetails.js"
 import { saveEntry } from "../helpers/addToList.js"
 import { showTrailerModal } from "./trailerModal.js"
-import { showTemplate } from "../helpers/searchModal.js"
-import { searchKeywords } from "../api/getResponse.js"
+import { showTemplate, submitSearch } from "../helpers/searchModal.js"
+import { getAttributeNameOf } from "./getAttributeNameOf.js"
 
 export function eventDelegation() {
   document.addEventListener("click", e => {
@@ -32,12 +32,7 @@ export function eventDelegation() {
     }
 
     // if Search-button is submitted
-    if (el.id === "submitSearch") {
-      let container = el.closest("div")
-      let input = container.querySelector("input")
-      let query = input.value
-      searchKeywords(query).then( result => console.log(result))
-    }
+    if (el.id === "submitSearch") submitSearch(el)
 
     //remove modal when clicked outside of content
     const activeModalClass = ["modalView", "close"];
@@ -52,6 +47,30 @@ export function eventDelegation() {
       let { id, media } = result
       renderDetails(id, media)
     }
+
+    // toggle attribute based on filter for MutationObserver
+    if (e.target.closest("li")) {
+      let listItem = e.target.textContent.toLowerCase()
+      let container = e.target.closest("aside")
+      container.dataset.filter = getAttributeNameOf(listItem)
+    }
+
+    // Archive entries from userList
+    if (e.target.id == "archiveButton") {
+      let result = getAttributes(el, "data-id")
+      if (!result) return;
+      let entry = result.elem
+      entry.dataset.status = "archived"
+    }
+
+  })
+
+  document.addEventListener("keyup", e => {
+    let el = e.target
+    if (!el.closest("input")) return;
+
+    // if ENTER-key is hit as searchSubmit
+    if (e.key === "Enter") submitSearch(el)
   })
 }
 
@@ -68,7 +87,8 @@ function getAttributes(element, attribute) {
   if (element.getAttribute(attribute)) {
     return { 
       id: Number(element.dataset.id), 
-      media: element.dataset.media
+      media: element.dataset.media,
+      elem: element,
      }
   }
   return getAttributes(element.parentElement, attribute)

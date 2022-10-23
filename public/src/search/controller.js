@@ -1,12 +1,12 @@
-import { userList } from "./model.js"
+import { results } from "./model.js"
 import * as view from "./view.js"
 import * as footer from "../footer/controller.js"
 import { eventDelegation } from "../helpers/eventListeners.js"
 
 function init() {
-  if (!userList) return;
-  Promise.all(userList).then( results => {
-    results.forEach( entry => view.render(entry) )
+  if (!results) return;
+  results.forEach(entry => {
+    view.render(entry)
   })
 }
 
@@ -21,9 +21,7 @@ function observer() {
   observer.observe(targetNode, { attributes: true });
 }
 
-init()
-observer()
 eventDelegation()
+observer()
+init()
 footer.init()
-
-//export { toFilter }
