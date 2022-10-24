@@ -1,17 +1,16 @@
 import { addRatingStars } from "../helpers/addRatingStars.js"
+import { resolveTitleName } from "../helpers/resolveTitleName.js"
 
 let container = document.querySelector("main")
 let aside = document.querySelector("aside")
 
-function render({ id, title, rating, releaseDate, genres, media_type }) {
-
+function render(result) {
   // TODO: Create a template of all this
 
-  //console.log(id, title)
-
   let entry = document.createElement("div")
-  entry.dataset.id = id
-  entry.dataset.media = media_type
+  let media = result.media_type
+  entry.dataset.id = result.id
+  entry.dataset.media = media
   entry.classList.add("entry")
 
   let details = document.createElement("div")
@@ -26,21 +25,22 @@ function render({ id, title, rating, releaseDate, genres, media_type }) {
   // heading
   let headingElem = document.createElement("div")
   headingElem.classList.add("heading")
+  headingElem.dataset.linkForward = "true"
 
   let titleElem = document.createElement("span")
-  headingElem.dataset.linkForward = "true"
+  let title = resolveTitleName(media)
+  titleElem.textContent = result[title]
   titleElem.classList.add("title")
-  titleElem.textContent = title
 
   let mediaElem = document.createElement("em")
-  mediaElem.textContent = `(${media_type})`
+  mediaElem.textContent = `(${result.media_type})`
 
   // sub-heading
   let subHeadingElem = document.createElement("div")
   subHeadingElem.classList.add("subheading")
 
   let releaseDateElem = document.createElement("span")
-  releaseDateElem.textContent = `${releaseDate}`
+  releaseDateElem.textContent = `${result.releaseDate}`
 
   let ratingElem = document.createElement("span")
   //ratingElem.innerHTML = addRatingStars(rating)
@@ -69,17 +69,4 @@ function render({ id, title, rating, releaseDate, genres, media_type }) {
   subHeadingElem.append(ratingElem)
 }
 
-function filter(attribute) {
-  let entries = document.querySelectorAll(".entry")
-  entries.forEach(entry => {
-    // reset all entries before filtering
-    entry.classList.remove("hidden")
-
-    console.log(entry, attribute)
-    
-    if (!attribute) return;
-    if (attribute !== entry.getAttribute("data-media")) entry.classList.add("hidden")
-  })
-}
-
-export { render, filter }
+export { render }

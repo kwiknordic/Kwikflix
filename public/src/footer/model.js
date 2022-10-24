@@ -1,4 +1,4 @@
-let footerMenuLinks = {
+export const footerMenuLinks = {
   About: {
     "Link 1": "#",
     "Link 2": "#",
@@ -18,5 +18,3 @@ let footerMenuLinks = {
     "Link 12": "#",
   },
 }
-
-export { footerMenuLinks }

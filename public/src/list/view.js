@@ -71,16 +71,4 @@ function render({ id, title, rating, releaseDate, genres, mediaType, status }) {
   
 }
 
-// TODO: add buttons [archive] to each entry so that we can try the filter
-function filter(attribute) {
-  let entries = document.querySelectorAll(".entry")
-  entries.forEach(entry => {
-    // reset all entries before filtering
-    entry.classList.remove("hidden")
-    
-    if (!attribute) return;
-    if (attribute !== entry.getAttribute("data-status")) entry.classList.add("hidden")
-  })
-}
-
-export { render, filter }
+export { render }

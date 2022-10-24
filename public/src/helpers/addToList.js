@@ -26,11 +26,8 @@ export function saveEntry(id, media, status) {
   localStorage.setItem('userList', JSON.stringify(userList))
 }
 
-export function checkListStatus(id) {
+export function isEntryAdded(id) {
   if (!localStorage.getItem("userList")) return;
   let database = JSON.parse(localStorage.userList)
-  let button = document.querySelector("#add-to-list")
-  if (database.some( entry => entry.id === id)) {
-    button.disabled = "true"
-  }
+  return database.some( entry => entry.id === id)
 }

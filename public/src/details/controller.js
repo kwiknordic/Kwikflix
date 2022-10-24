@@ -1,16 +1,27 @@
 import { data } from "./model.js"
 import * as view from "./view.js"
-import { checkListStatus } from "../helpers/addToList.js"
 import { eventDelegation } from "../helpers/eventListeners.js"
-import * as footer from "../footer/controller.js"
+import { init as footer } from "../footer/controller.js"
 
-function init() {
+function initialize() {
+  if (!window.location.pathname.includes("details")) return;
+
   view.addAttributes(data.id, data.mediaType)
   view.addBackgroundPic(data)
   view.addTextContent(data)
-  checkListStatus(data.id)
-  footer.init()
+  view.disableButton(data.id)
+  footer()
   eventDelegation()
 }
 
-init()
+export function storeRequest(id, media) {
+  let reqData = {
+    id,
+    media,
+  }
+
+  localStorage.setItem('reqData', JSON.stringify(reqData))
+  window.location.assign("./details.html")
+}
+
+initialize()

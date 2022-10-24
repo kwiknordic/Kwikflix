@@ -1,4 +1,4 @@
-import { renderDetails } from "../../helpers/renderDetails.js"
+import { resolveTitleName } from "../../helpers/resolveTitleName.js"
 
 let container = document.querySelectorAll(".trending-now-container")
 
@@ -26,25 +26,20 @@ export async function renderSlider(sliderNum, data) {
     if (!entry.backdrop_path) return;
 
     let newSlide = document.createElement("div")
+    let media = entry.media_type
     newSlide.dataset.id = entry.id
-    newSlide.dataset.media = entry.media_type
+    newSlide.dataset.media = media
     newSlide.dataset.linkForward = true
 
     newSlide.style.backgroundImage = `url("${imgURL}${imgSize}${entry.backdrop_path}"`
 
     // add title
-    let title = document.createElement("h4")
-    let originalTitle;
-
-    entry.media_type == "movie" ? 
-      originalTitle = "original_title" :
-    entry.media_type == "tv" ?
-      originalTitle = "original_name" :
-      "original_title"
+    let titleElem = document.createElement("h4")
+    let title = resolveTitleName(media)
     
-    title.textContent = entry[originalTitle]
+    titleElem.textContent = entry[title]
 
-    newSlide.append(title)
+    newSlide.append(titleElem)
     slider.append(newSlide)
   })
 }

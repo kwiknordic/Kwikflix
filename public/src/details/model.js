@@ -1,9 +1,9 @@
 import { searchLists, getImgProps } from "../api/getResponse.js"
 
-let reqData = JSON.parse(localStorage.reqData)
-let id = Number(reqData.id)
-let media = reqData.media
 let imgProps = await getImgProps()
+let database = JSON.parse(localStorage.reqData)
+let id = Number(database.id)
+let media = database.media
 let response;
 let data;
 
@@ -27,24 +27,24 @@ data = {
 }
 
 if (media == "movie") {
-  let movieSpecificProps = {
+  let movieSpecific = {
     title: response.original_title,
     releaseDate: response.release_date,
     runTime: response.runtime,
     imdbID: response.imdb_id,
   }
 
-  data = Object.assign({}, movieSpecificProps, data)
+  data = Object.assign({}, movieSpecific, data)
 }
 
 if (media == "tv") {
-  let tvSpecificProps = {
+  let tvSpecific = {
     title: response.original_name,
     releaseDate: response.first_air_date,
     runTime: response.last_episode_to_air.runtime
   }
 
-  data = Object.assign({}, tvSpecificProps, data)
+  data = Object.assign({}, tvSpecific, data)
 }
 
 export { data }

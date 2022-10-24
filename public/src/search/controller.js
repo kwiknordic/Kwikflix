@@ -1,27 +1,25 @@
 import { results } from "./model.js"
 import * as view from "./view.js"
-import * as footer from "../footer/controller.js"
+import { init as footer } from "../footer/controller.js"
 import { eventDelegation } from "../helpers/eventListeners.js"
+import { filterObserver } from "../helpers/filterObserver.js"
 
-function init() {
+function initialize() {
+  if (!window.location.pathname.includes("search")) return;
+
   if (!results) return;
   results.forEach(entry => {
     view.render(entry)
   })
+
+  eventDelegation()
+  filterObserver("data-media")
+  footer()
 }
 
-function observer() {
-  let targetNode = document.querySelector("aside")
-  const observer = new MutationObserver( e => {
-    let target = e.at(-1).target
-    let mutatedAttr = e.at(-1).attributeName
-    let attribute = target.getAttribute(mutatedAttr)
-    view.filter(attribute)
-  });
-  observer.observe(targetNode, { attributes: true });
+export function storeSearch(results) {
+  localStorage.setItem('searchQuery', JSON.stringify(results))
+  window.location.assign("./search.html")
 }
 
-eventDelegation()
-observer()
-init()
-footer.init()
+initialize()

@@ -5,4 +5,6 @@ if (localStorage.searchQuery) {
   results = querySearchObject.results
 }
 
+console.log(results)
+
 export { results }

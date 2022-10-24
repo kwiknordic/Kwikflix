@@ -1,4 +1,4 @@
-import { renderDetails } from "../helpers/renderDetails.js"
+import { storeRequest } from "../details/controller.js"
 import { saveEntry } from "../helpers/addToList.js"
 import { showTrailerModal } from "./trailerModal.js"
 import { showTemplate, submitSearch } from "../helpers/searchModal.js"
@@ -46,7 +46,7 @@ export function eventDelegation() {
       let result = getAttributes(el, "data-id")
       if (!result) return;
       let { id, media } = result
-      renderDetails(id, media)
+      storeRequest(id, media)
     }
 
     // toggle attribute based on filter for MutationObserver
@@ -97,5 +97,6 @@ function getAttributes(element, attribute) {
       elem: element,
      }
   }
+  
   return getAttributes(element.parentElement, attribute)
 }

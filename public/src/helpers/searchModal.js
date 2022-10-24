@@ -1,5 +1,5 @@
 import { searchKeywords } from "../api/getResponse.js"
-import { renderSearch } from "./renderSearch.js"
+import { storeSearch } from "../search/controller.js"
 
 export function showTemplate() {
   let template = searchTemplate()
@@ -14,7 +14,7 @@ export function submitSearch(element) {
 
   searchKeywords(query)
     .then( results => {
-      renderSearch(results)
+      storeSearch(results)
     })
 }
 

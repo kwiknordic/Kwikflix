@@ -1,13 +1,13 @@
-let footer = document.querySelector("#footer")
+let footer = document.getElementById("footer")
 let footerMain = footer.querySelector(".main")
-let footerLinks = footerMain.querySelector(".footer-menu")
 
 function addLinks(menu) {
+  let footerLinks = footerMain.querySelector(".footer-menu")
+
   for (let parent in menu) {
     let container = document.createElement("details")
     let title = document.createElement("summary")
     let list = document.createElement("ul")
-
     title.textContent = parent
 
     for (let child in menu[parent]) {
@@ -23,27 +23,20 @@ function addLinks(menu) {
     footerLinks.append(container)
     container.append(title)
     container.append(list)
-
   }
 }
-
+ 
 function makeResponsive() {
 
-  // check initially
-  openDetails()
-
-  // check again everytime browser is resized
-  window.addEventListener("resize", openDetails)
-
-  function openDetails() {
-    let width = document.body.clientWidth
-
-    // only have menu opened for bigger screens
-    if (width < 768) return;
-
+  function openFooterMenus() {
+    if (!isDesktop()) return;
     let allDetails = footerMain.querySelectorAll("details")
     allDetails.forEach( detail => detail.setAttribute("open", ""))
   }
+
+  // check initially + everytime browser is resized
+  openFooterMenus()
+  window.addEventListener("resize", openFooterMenus)
 }
 
 function copyRightPlaceholder() {
@@ -53,4 +46,13 @@ function copyRightPlaceholder() {
   footer.append(container)
 }
 
-export { addLinks, makeResponsive, copyRightPlaceholder }
+function isDesktop() {
+  let width = document.body.clientWidth
+  return width > 768 ? true : false
+}
+
+export { 
+  addLinks, 
+  makeResponsive, 
+  copyRightPlaceholder 
+}
