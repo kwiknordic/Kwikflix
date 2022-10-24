@@ -2,13 +2,14 @@ import { addRatingStars } from "../helpers/addRatingStars.js"
 
 let container = document.querySelector("main")
 
-function render({ id, title, rating, releaseDate, genres, mediaType }) {
+function render({ id, title, rating, releaseDate, genres, mediaType, status }) {
 
   // TODO: Create a template of all this
 
   let entry = document.createElement("div")
   entry.dataset.id = id
   entry.dataset.media = mediaType
+  entry.dataset.status = status
   entry.classList.add("entry")
 
   let details = document.createElement("div")
@@ -76,8 +77,6 @@ function filter(attribute) {
   entries.forEach(entry => {
     // reset all entries before filtering
     entry.classList.remove("hidden")
-
-    console.log(entry, attribute)
     
     if (!attribute) return;
     if (attribute !== entry.getAttribute("data-status")) entry.classList.add("hidden")

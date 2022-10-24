@@ -6,11 +6,12 @@ if (localStorage.userList) {
   userList = JSON.parse(localStorage.userList)
 
   userList = userList.map( entry => {
-    return getEntry(Number(entry.id), entry.media)
+    let data = entry.data
+    return getEntry(Number(data.id), data.media, data.status)
   })
 }
 
-async function getEntry(id, media) {
+async function getEntry(id, media, status) {
   if (!id || !media) return;
 
   let imgProps = await getImgProps()
@@ -30,6 +31,7 @@ async function getEntry(id, media) {
 
   data = {
     mediaType: media,
+    status,
 
     id: response.id,
     overview: response.overview,

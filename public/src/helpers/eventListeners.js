@@ -21,7 +21,8 @@ export function eventDelegation() {
       let result = getAttributes(el, "data-id")
       if (!result) return;
       let { id, media } = result
-      saveEntry(id, media)
+      let status = "TBS"
+      saveEntry(id, media, status)
       el.disabled = "true"
     };
 
@@ -59,8 +60,13 @@ export function eventDelegation() {
     if (e.target.id == "archiveButton") {
       let result = getAttributes(el, "data-id")
       if (!result) return;
+      let { id, media } = result
+      let status = "archived"
       let entry = result.elem
-      entry.dataset.status = "archived"
+
+      // Maybe adding attribute can be deleted, and let saveEntry refresh itself
+      entry.dataset.status = status
+      saveEntry(id, media, status)
     }
 
   })
