@@ -1,3 +1,5 @@
+import { checkListStatus } from "../../helpers/addToList.js"
+
 let container = document.querySelector("#hero-section")
 
 export function render(dataObj) {
@@ -6,6 +8,7 @@ export function render(dataObj) {
   addBackgroundPic(dataObj)
   addTextContent(dataObj)
   addAttributes(id, mediaType)
+  checkListStatus(id)
 }
 
 function addAttributes(id, media) {
