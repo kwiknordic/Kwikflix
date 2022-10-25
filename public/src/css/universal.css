@@ -19,7 +19,7 @@ body {
   background-color:rgb(29, 29, 29)
 }
 
-[data-link-forward|="true"], aside ul li {
+[data-link-forward|="true"], aside ul li, i {
   cursor: pointer;
 }
 
@@ -34,16 +34,15 @@ body {
 #header .right-navbar > * {
   display: inline;
   color: white;
-  cursor: pointer;
   padding: 0.5rem;
-}
-
-hr {
-  color: darkgray;
 }
 
 .wrapper .hidden {
   display: none;
+}
+
+hr {
+  color: rgb(36, 36, 36);
 }
 
 /* Buttons */
@@ -61,7 +60,7 @@ button:nth-child(1) {
   margin-right: 0.5rem;
 }
 
-button:hover, #header .right-navbar i:hover, li:hover {
+button:hover, i:hover, li:hover {
   opacity: 0.9;
 }
 

@@ -10,50 +10,15 @@
 
 .wrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: nowrap;
   padding: 3vh 5vw 0vh 5vw;
-  gap: 2rem;
-}
-
-.wrapper main {
-  display: flex;
-  flex-direction: column;
-  place-content: space-between;
-  width: 100%;
-/*   border: 1px solid red; */
-}
-
-.wrapper aside {
-  flex-basis: calc(20%);
-  border-right: 1px solid red;
+  gap: 2.5rem;
 }
 
 .wrapper aside h2 {
   margin-bottom: 0.5rem;
   cursor: default;
-}
-
-.wrapper aside li {
-  list-style: none;
-  padding-block: 0.3rem;
-}
-
-.entry {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-bottom: 1rem;
-}
-
-main #details {
-  display: flex;
-  flex-direction: column;
-}
-
-.entry .heading {
-  display: flex;
-  align-items: center;
 }
 
 .heading .title {
@@ -62,11 +27,103 @@ main #details {
   font-weight: 600;
 }
 
-.wrapper main hr {
-  margin-bottom: 1rem;
+.wrapper aside {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid red;
+  width: 100%;
+  justify-content: center;
 }
 
-main .divider {
+.wrapper aside ul {
+  font-size: 1.2rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  display: flex;
+  place-content: space-between;
+}
+
+.wrapper aside li {
+  list-style: none;
+  display: inline;
+  padding-inline: 1.5rem;
+  padding-block: 0.4rem;
+  background-color: rgb(27, 27, 27);
+  border: 2px solid rgb(36, 36, 36);
+  border-radius: 5px;
+}
+
+.entry {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 3rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgb(36, 36, 36);
+  place-content: space-between;
+}
+
+.entry .details > * {
+  padding-bottom: 0.2rem;
+}
+
+.entry em {
+  font-style: normal;
+  color: grey;
+}
+
+.entry .actions {
+  padding-top: 2rem;
   padding-inline: 0.5rem;
-  color: darkgray;
+  display: flex;
+  gap: 3rem;
+}
+
+@media (min-width: 768px) {
+
+  .wrapper {
+    flex-direction: row;
+    }
+
+  .wrapper main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .wrapper aside {
+    flex-basis: calc(20%);
+    border-right: 1px solid red;
+    width: unset;
+    justify-content: unset;
+    border-bottom: unset;
+    padding-bottom: unset;
+  }
+
+  .wrapper aside ul {
+    font-size: unset;
+    padding-top: unset;
+    padding-bottom: unset;
+    display: unset;
+    place-content: unset;
+  }
+
+  .wrapper aside ul li {
+    display: block;
+    padding-inline: unset;
+    background-color: unset;
+    border: unset;
+    border-radius: unset;
+  }
+
+  .entry {
+    flex-direction: row;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .entry .actions {
+    padding-top: unset;
+    align-self: center;
+    gap: 2rem;
+  }
+
 }

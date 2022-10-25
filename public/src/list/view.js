@@ -37,8 +37,8 @@ function entryTemplate() {
   content.classList.add("entry")
 
   content.insertAdjacentHTML("afterbegin", `
-  <div id="details">
-    <div class="heading" data-link-forward="true">
+  <div class="details">
+    <div class="heading">
       <span class="title"></span>
       <em class="media"></em>
     </div>
@@ -49,10 +49,11 @@ function entryTemplate() {
     </div>
     <span class="genres"></span>
   </div>
-  <div id="actions">
-    <i class="fa-solid fa-box-archive"></i>
-    <i class="fa-solid fa-reply"></i>
-    <i class="fa-solid fa-xmark"></i>
+  <div class="actions">
+    <i class="fa-xl fa-solid fa-file-lines" data-link-forward="true"></i>
+    <i class="fa-xl fa-solid fa-box-archive"></i>
+    <i class="fa-xl fa-solid fa-rotate-left"></i>
+    <i class="fa-xl fa-solid fa-trash-can"></i>
   </div>
   `)
 
