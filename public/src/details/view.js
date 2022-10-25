@@ -6,7 +6,6 @@ let mainElem = document.querySelector("article")
 function addAttributes(id, type) {
   mainElem.dataset.id = id
   mainElem.dataset.media = type
-  return mainElem
 }
 
 function disableButton(id) {
@@ -15,42 +14,44 @@ function disableButton(id) {
   button.disabled = "true"
 }
 
-function addBackgroundPic({ title, imgSizes, imgURL, poster }) {
-  let container = document.querySelector(".poster")
-  let image = container.querySelector("img")
+function showPoster({ title, imgSizes, imgURL, poster }) {
+  let image = document.body.querySelector("img")
 
   // imgsize, TODO: use different sizes depending on media-screen
-  let imgSize = imgSizes.at(-1)
-
-  image.src = `${imgURL}${imgSize}${poster}`
+  let size = imgSizes.at(-1)
+  
   image.alt = title
-  return image
+  image.src = `${imgURL}${size}${poster}`
 }
 
-function addTextContent({ title, overview, rating, count, releaseDate, runTime, genres }) {
-  let titleElem = document.querySelector("h1")
+function showContent(
+  { title, 
+    overview, 
+    rating, 
+    votes, 
+    releaseDate, 
+    runTime, 
+    genres 
+  }) {
+
+  // linked variables to HTMLElements
+  let titleElem = mainElem.querySelector("h1")
   let overviewElem = mainElem.querySelector("p")
   let ratingElem = document.getElementById("rating")
-  let countElem = document.getElementById("count")
+  let votesElem = document.getElementById("votes")
   let releaseElem = document.getElementById("release")
   let runtimeElem = document.getElementById("runtime")
   let genresElem = document.getElementById("genres")
 
-  // add title and summary
+  // content added to HTMLElements
   document.title = title
   titleElem.textContent = title
   overviewElem.textContent = overview
-
-  // add rating and count
   ratingElem.innerHTML = addRatingStars(rating)
-  countElem.textContent = `${count} votes`
-
-  // add subheading (runtime, release)
-  // TODO: code "N/A" as fallback
+  votesElem.textContent = `${votes} votes`
   releaseElem.textContent = `${releaseDate}`
   runtimeElem.textContent = `${runTime} minutes`
 
-  // populate with genres
   genres = genres.map(genre => genre.name)
   const formatter = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
   genresElem.textContent += formatter.format(genres)
@@ -58,7 +59,7 @@ function addTextContent({ title, overview, rating, count, releaseDate, runTime, 
 
 export { 
   addAttributes, 
-  addBackgroundPic, 
-  addTextContent, 
+  showPoster, 
+  showContent, 
   disableButton
  }

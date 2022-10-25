@@ -1,5 +1,5 @@
 import { addRatingStars } from "../helpers/addRatingStars.js"
-import { resolveTitleName } from "../helpers/resolveTitleName.js"
+import { resolveTitle, resolveRelease } from "../helpers/resolveProps.js"
 
 let container = document.querySelector("main")
 let aside = document.querySelector("aside")
@@ -28,7 +28,7 @@ function render(result) {
   headingElem.dataset.linkForward = "true"
 
   let titleElem = document.createElement("span")
-  let title = resolveTitleName(media)
+  let title = resolveTitle(media)
   titleElem.textContent = result[title]
   titleElem.classList.add("title")
 
@@ -40,7 +40,7 @@ function render(result) {
   subHeadingElem.classList.add("subheading")
 
   let releaseDateElem = document.createElement("span")
-  releaseDateElem.textContent = `${result.releaseDate}`
+  resolveRelease(result, releaseDateElem)
 
   let ratingElem = document.createElement("span")
   //ratingElem.innerHTML = addRatingStars(rating)

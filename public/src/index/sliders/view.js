@@ -1,4 +1,4 @@
-import { resolveTitleName } from "../../helpers/resolveTitleName.js"
+import { resolveTitle } from "../../helpers/resolveProps.js"
 
 let container = document.querySelectorAll(".trending-now-container")
 
@@ -35,7 +35,7 @@ export async function renderSlider(sliderNum, data) {
 
     // add title
     let titleElem = document.createElement("h4")
-    let title = resolveTitleName(media)
+    let title = resolveTitle(media)
     
     titleElem.textContent = entry[title]
 

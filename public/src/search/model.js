@@ -1,10 +1,8 @@
-let results;
+let response;
 
 if (localStorage.searchQuery) {
   let querySearchObject = JSON.parse(localStorage.searchQuery)
-  results = querySearchObject.results
+  response = querySearchObject.results
 }
 
-console.log(results)
-
-export { results }
+export { response }

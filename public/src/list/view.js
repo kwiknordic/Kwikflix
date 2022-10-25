@@ -1,74 +1,61 @@
 import { addRatingStars } from "../helpers/addRatingStars.js"
 
-let container = document.querySelector("main")
+export function renderEntryElements({ id, media, status }) {
+  let target = document.body.querySelector("main")
+  let template = entryTemplate()
+  let content = template.content.firstElementChild
+  content.dataset.id = id
+  content.dataset.media = media
+  content.dataset.status = status
 
-function render({ id, title, rating, releaseDate, genres, mediaType, status }) {
+  let entry = template.content.cloneNode(true)
+  target.append(entry)
+}
 
-  // TODO: Create a template of all this
+export function populateEntryContent({ id, title, rating, releaseDate, genres, media }) {
+  let target = document.body.querySelector(`[data-id="${id}"]`)
 
-  let entry = document.createElement("div")
-  entry.dataset.id = id
-  entry.dataset.media = mediaType
-  entry.dataset.status = status
-  entry.classList.add("entry")
+  let titleElem = target.querySelector(".title")
+  let mediaElem = target.querySelector(".media")
+  let releasedElem = target.querySelector(".release")
+  let ratingElem = target.querySelector(".rating")
+  let genresElem = target.querySelector(".genres")
 
-  let details = document.createElement("div")
-  details.id = "details"
-
-  let sectionTwo = document.createElement("div")
-  let archiveButton = document.createElement("button")
-  archiveButton.id = "archiveButton"
-  archiveButton.textContent = "Archive"
-
-  let sectionThree = document.createElement("div")
-
-  // heading
-  let headingElem = document.createElement("div")
-  headingElem.classList.add("heading")
-
-  let titleElem = document.createElement("span")
-  headingElem.dataset.linkForward = "true"
-  titleElem.classList.add("title")
   titleElem.textContent = title
-
-  let mediaElem = document.createElement("em")
-  mediaElem.textContent = `(${mediaType})`
-
-  // sub-heading
-  let subHeadingElem = document.createElement("div")
-  subHeadingElem.classList.add("subheading")
-
-  let releaseDateElem = document.createElement("span")
-  releaseDateElem.textContent = `${releaseDate}`
-
-  let ratingElem = document.createElement("span")
+  mediaElem.textContent = `(${media})`
+  releasedElem.textContent = `${releaseDate.slice(0,4)}`
   ratingElem.innerHTML = addRatingStars(rating)
 
-  let genresElem = document.createElement("span")
   genres = genres.map(genre => genre.name)
   const formatter = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
   genresElem.textContent += formatter.format(genres)
-
-  let hr = document.createElement("hr")
-
-  let divider = document.createElement("span")
-  divider.classList.add("divider")
-  divider.textContent = "|"
-
-  container.append(entry)
-  entry.append(details)
-  entry.append(sectionTwo)
-  entry.append(sectionThree)
-  details.append(headingElem)
-  details.append(subHeadingElem)
-  details.append(genresElem)
-  sectionTwo.append(archiveButton)
-  headingElem.append(titleElem)
-  headingElem.append(mediaElem)
-  subHeadingElem.append(releaseDateElem)
-  subHeadingElem.append(divider.cloneNode(true))
-  subHeadingElem.append(ratingElem)
-  
 }
 
-export { render }
+function entryTemplate() {
+  let template = document.createElement("template")
+  let content = document.createElement("div")
+  content.classList.add("entry")
+
+  content.insertAdjacentHTML("afterbegin", `
+  <div id="details">
+    <div class="heading" data-link-forward="true">
+      <span class="title"></span>
+      <em class="media"></em>
+    </div>
+    <div class="subheading">
+      <span class="release"></span>
+      <span>|</span>
+      <span class="rating"></span>
+    </div>
+    <span class="genres"></span>
+  </div>
+  <div id="actions">
+    <i class="fa-solid fa-box-archive"></i>
+    <i class="fa-solid fa-reply"></i>
+    <i class="fa-solid fa-xmark"></i>
+  </div>
+  `)
+
+  template.content.append(content)
+  return template
+}

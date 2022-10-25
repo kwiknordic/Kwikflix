@@ -8,7 +8,7 @@ let { page, lang, search, adult } = config.base
 async function searchKeywords(query, currentPage = 1) {
   if (!query) throw Error("Query is empty")
 
-  let response = await fetch(
+  const response = await fetch(
     url + 
     "/search/multi" + 
     API_KEY + 
@@ -19,7 +19,14 @@ async function searchKeywords(query, currentPage = 1) {
   )
 
   if (!response.ok) throw Error("Response is not ok")
-  return response.json()
+  const jsonResponse = await response.json()
+
+  return {
+    page: jsonResponse.page,
+    total_pages: jsonResponse.total_pages,
+    total_results: jsonResponse.total_results,
+    results: jsonResponse.results.filter(result => result.media_type !== "person")
+  }
 }
 
 // insert "self" @parameter:detail to search for unique IDs

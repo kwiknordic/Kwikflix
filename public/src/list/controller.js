@@ -9,7 +9,10 @@ function initialize() {
 
   if (!userList) return;
   Promise.all(userList).then( results => {
-    results.forEach( entry => view.render(entry) )
+    results.forEach(entry => {
+      view.renderEntryElements(entry)
+      view.populateEntryContent(entry)
+    })
   })
 
   eventDelegation()
