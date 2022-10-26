@@ -1,12 +1,18 @@
 export function addRatingStars(ratingValue) {
-  let value = Math.round(ratingValue / 2)
-  let star = "&#9733;"
-  let placeholder = "&#9734;"
+  let stars;
+  ratingValue > 8.3 ? stars = 5 :
+  ratingValue > 6.7 ? stars = 4 :
+  ratingValue > 5.8 ? stars = 3 :
+  ratingValue > 4 ? stars = 2 :
+  ratingValue > 0 ? stars = 1 :
+  stars = 0
 
-  let starRating = new Array(value).fill(star)
+  const starIcon = "&#9733;"
+  const placeholderIcon = "&#9734;"
+  const starRating = new Array(stars).fill(starIcon)
 
   while (starRating.length < 5) {
-    starRating.push(placeholder)
+    starRating.push(placeholderIcon)
   } 
 
   return starRating.join("")

@@ -9,7 +9,8 @@ function initialize() {
 
   if (!response) return;
   response.forEach(entry => {
-    view.render(entry)
+    view.renderEntryElements(entry)
+    view.populateEntryContent(entry)
   })
 
   eventDelegation()

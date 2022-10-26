@@ -21,11 +21,27 @@ async function searchKeywords(query, currentPage = 1) {
   if (!response.ok) throw Error("Response is not ok")
   const jsonResponse = await response.json()
 
+  let results = jsonResponse.results
+    .filter(result => result.media_type !== "person")
+    .map(obj => {
+      obj.title = obj.original_title || obj.original_name
+      obj.releaseDate = obj.release_date || obj.first_air_date || "N/A"
+      obj.media = obj.media_type
+      obj.rating = obj.vote_average
+
+      const unusedKeys = ["media_type", "vote_average", "original_title", "original_name", "release_date", "first_air_date"]
+      unusedKeys.forEach(key => delete obj[key])
+
+      return obj
+    })
+
+    console.log(results)
+
   return {
     page: jsonResponse.page,
     total_pages: jsonResponse.total_pages,
     total_results: jsonResponse.total_results,
-    results: jsonResponse.results.filter(result => result.media_type !== "person")
+    results,
   }
 }
 

@@ -1,72 +1,59 @@
 import { addRatingStars } from "../helpers/addRatingStars.js"
-import { resolveTitle, resolveRelease } from "../helpers/resolveProps.js"
 
-let container = document.querySelector("main")
-let aside = document.querySelector("aside")
+export function renderEntryElements({ id, media, status }) {
+  let target = document.body.querySelector("main")
+  let template = entryTemplate()
+  let content = template.content.firstElementChild
+  content.dataset.id = id
+  content.dataset.media = media
+  content.dataset.status = status
 
-function render(result) {
-  // TODO: Create a template of all this
-
-  let entry = document.createElement("div")
-  let media = result.media_type
-  entry.dataset.id = result.id
-  entry.dataset.media = media
-  entry.classList.add("entry")
-
-  let details = document.createElement("div")
-  details.id = "details"
-
-  let sectionTwo = document.createElement("div")
-  let whatever = document.createElement("span")
-  whatever.textContent = "lalalala"
-
-  let sectionThree = document.createElement("div")
-
-  // heading
-  let headingElem = document.createElement("div")
-  headingElem.classList.add("heading")
-  headingElem.dataset.linkForward = "true"
-
-  let titleElem = document.createElement("span")
-  let title = resolveTitle(media)
-  titleElem.textContent = result[title]
-  titleElem.classList.add("title")
-
-  let mediaElem = document.createElement("em")
-  mediaElem.textContent = `(${result.media_type})`
-
-  // sub-heading
-  let subHeadingElem = document.createElement("div")
-  subHeadingElem.classList.add("subheading")
-
-  let releaseDateElem = document.createElement("span")
-  resolveRelease(result, releaseDateElem)
-
-  let ratingElem = document.createElement("span")
-  //ratingElem.innerHTML = addRatingStars(rating)
-
-/*   let genresElem = document.createElement("span")
-  genres = genres.map(genre => genre.name)
-  const formatter = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
-  genresElem.textContent += formatter.format(genres) */
-
-  let divider = document.createElement("span")
-  divider.classList.add("divider")
-  divider.textContent = "|"
-
-  container.append(entry)
-  entry.append(details)
-  entry.append(sectionTwo)
-  entry.append(sectionThree)
-  details.append(headingElem)
-  details.append(subHeadingElem)
-  //details.append(genresElem)
-  sectionTwo.append(whatever)
-  headingElem.append(titleElem)
-  headingElem.append(mediaElem)
-  subHeadingElem.append(releaseDateElem)
-  subHeadingElem.append(divider.cloneNode(true))
-  subHeadingElem.append(ratingElem)
+  let entry = template.content.cloneNode(true)
+  target.append(entry)
 }
 
-export { render }
+export function populateEntryContent({ id, title, rating, releaseDate, genres, media }) {
+  let target = document.body.querySelector(`[data-id="${id}"]`)
+
+  let titleElem = target.querySelector(".title")
+  let mediaElem = target.querySelector(".media")
+  let releasedElem = target.querySelector(".release")
+  let ratingElem = target.querySelector(".rating")
+  let genresElem = target.querySelector(".genres")
+
+  titleElem.textContent = title
+  mediaElem.textContent = `(${media})`
+  releasedElem.textContent = `${releaseDate.slice(0,4)}`
+  ratingElem.innerHTML = addRatingStars(rating)
+
+/*   genres = genres.map(genre => genre.name)
+  const formatter = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
+  genresElem.textContent += formatter.format(genres) */
+}
+
+function entryTemplate() {
+  let template = document.createElement("template")
+  let content = document.createElement("div")
+  content.classList.add("entry")
+
+  content.insertAdjacentHTML("afterbegin", `
+  <div class="details">
+    <div class="heading">
+      <span class="title"></span>
+      <em class="media"></em>
+    </div>
+    <div class="subheading">
+      <span class="release"></span>
+      <span>|</span>
+      <span class="rating"></span>
+    </div>
+    <span class="genres"></span>
+  </div>
+  <div class="actions">
+    <i class="fa-xl fa-solid fa-file-lines" data-link-forward="true"></i>
+  </div>
+  `)
+
+  template.content.append(content)
+  return template
+}

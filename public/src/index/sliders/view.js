@@ -1,5 +1,3 @@
-import { resolveTitle } from "../../helpers/resolveProps.js"
-
 let container = document.querySelectorAll(".trending-now-container")
 
 export async function renderSlider(sliderNum, data) {
@@ -21,6 +19,7 @@ export async function renderSlider(sliderNum, data) {
   let slider = container[sliderNum].querySelector(".slider")
 
   list.forEach( (entry, index) => {
+
     // jump over first movie-result; is shown in hero-section
     if (index == 0 && entry.media_type == "movie") return;
     if (!entry.backdrop_path) return;
@@ -33,11 +32,8 @@ export async function renderSlider(sliderNum, data) {
 
     newSlide.style.backgroundImage = `url("${imgURL}${imgSize}${entry.backdrop_path}"`
 
-    // add title
     let titleElem = document.createElement("h4")
-    let title = resolveTitle(media)
-    
-    titleElem.textContent = entry[title]
+    titleElem.textContent = entry.original_title || entry.original_name
 
     newSlide.append(titleElem)
     slider.append(newSlide)
