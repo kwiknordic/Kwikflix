@@ -37,7 +37,7 @@ body {
   padding: 0.5rem;
 }
 
-.wrapper .hidden {
+.wrapper .hidden, .hidden {
   display: none;
 }
 
@@ -182,6 +182,10 @@ button#add-to-list:disabled::before {
 }
 
 /* Modal: trailer */
+
+.overflow-hidden {
+  overflow: hidden;
+}
 
 .modalView {
   display: flex;

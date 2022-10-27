@@ -8,9 +8,10 @@ export async function showTrailerModal(id, media) {
   if (media === "movie") response = await searchLists(id, "movies", "videos")
   if (media === "tv") response = await searchLists(id, "tv", "videos")
   let videoPlayer = content.lastElementChild
-  videoPlayer.data = getTrailer(response.results)
+  videoPlayer.src = getTrailer(response.results)
 
   let modal = template.content.cloneNode(true)
+  document.body.classList.toggle("overflow-hidden")
   document.body.prepend(modal)
 }
 
@@ -38,7 +39,7 @@ function trailerTemplate() {
 
   content.insertAdjacentHTML("afterbegin", `
     <i class="fa fa-close close"></i>
-    <object class="embedded-video" type="video/mp4" data=""></object>
+    <iframe class="embedded-video" muted playsinline src=""></iframe>
   `)
 
   template.content.append(content)

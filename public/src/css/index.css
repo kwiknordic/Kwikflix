@@ -15,7 +15,7 @@
   display: grid;
   grid-template-rows: auto;
   row-gap: 1rem;
-  min-height: calc(250px + 20vh);
+  min-height: calc(300px + 20vh);
   place-content: center start;
 
   color: rgb(250, 250, 250);

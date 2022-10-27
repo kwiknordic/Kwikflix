@@ -5,12 +5,15 @@ import { init as footer } from "../footer/controller.js"
 
 function initialize() {
   if (!window.location.pathname.includes("details")) return;
-  if (!result) return;
 
-  view.addAttributes(result.id, result.media)
-  view.showPoster(result)
-  view.showContent(result)
-  view.disableButton(result.id)
+  try {
+    view.addAttributes(result.id, result.media)
+    view.showPoster(result)
+    view.showContent(result)
+    view.disableButton(result.id)
+  } catch (e) {
+    window.location.assign("./")
+  }
 
   footer()
   eventDelegation()

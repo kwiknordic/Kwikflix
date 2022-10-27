@@ -1,4 +1,4 @@
-import { isEntryAdded } from "../../helpers/addToList.js"
+import { isEntryAdded } from "../../helpers/isEntryAdded.js"
 
 let container = document.querySelector("#hero-section")
 

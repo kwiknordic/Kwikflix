@@ -1,7 +1,8 @@
 import { addRatingStars } from "../helpers/addRatingStars.js"
 
+const main = document.body.querySelector("main")
+
 export function renderEntryElements({ id, media, status }) {
-  let target = document.body.querySelector("main")
   let template = entryTemplate()
   let content = template.content.firstElementChild
   content.dataset.id = id
@@ -9,7 +10,7 @@ export function renderEntryElements({ id, media, status }) {
   content.dataset.status = status
 
   let entry = template.content.cloneNode(true)
-  target.append(entry)
+  main.append(entry)
 }
 
 export function populateEntryContent({ id, title, rating, releaseDate, genres, media }) {
@@ -56,4 +57,10 @@ function entryTemplate() {
 
   template.content.append(content)
   return template
+}
+
+export function noRenderMessage() {
+  let notice = document.createElement("p")
+  notice = "There are no results to show. Please enter a search input."
+  main.append(notice)
 }

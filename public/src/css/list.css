@@ -47,7 +47,7 @@
 .wrapper aside li {
   list-style: none;
   display: inline;
-  padding-inline: 1.5rem;
+  padding-inline: 1rem;
   padding-block: 0.4rem;
   background-color: rgb(27, 27, 27);
   border: 2px solid rgb(36, 36, 36);

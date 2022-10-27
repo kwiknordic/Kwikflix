@@ -1,5 +1,5 @@
 import { addRatingStars } from "../helpers/addRatingStars.js"
-import { isEntryAdded } from "../helpers/addToList.js"
+import { isEntryAdded } from "../helpers/isEntryAdded.js"
 
 let mainElem = document.querySelector("article")
 
@@ -61,5 +61,5 @@ export {
   addAttributes, 
   showPoster, 
   showContent, 
-  disableButton
+  disableButton,
  }

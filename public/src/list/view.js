@@ -1,4 +1,25 @@
 import { addRatingStars } from "../helpers/addRatingStars.js"
+import { removeEntry } from "./controller.js"
+
+export function toggleActionBtn(id, status) {
+  const parent = document.querySelector(`[data-id="${id}"]`)
+  const archiveButton = parent.querySelector(".archive-button")
+  const unsetButton = parent.querySelector(".unset-button")
+
+  if (status === "trash") {
+    removeEntry(id)
+    parent.style.display = "none"
+    return;
+  }
+
+  if (status === "archived") {
+    archiveButton.classList.add("hidden")
+    unsetButton.classList.remove("hidden")
+  } else {
+    unsetButton.classList.add("hidden")
+    archiveButton.classList.remove("hidden")
+  }
+}
 
 export function renderEntryElements({ id, media, status }) {
   let target = document.body.querySelector("main")
@@ -51,9 +72,9 @@ function entryTemplate() {
   </div>
   <div class="actions">
     <i class="fa-xl fa-solid fa-file-lines" data-link-forward="true"></i>
-    <i class="fa-xl fa-solid fa-box-archive"></i>
-    <i class="fa-xl fa-solid fa-rotate-left"></i>
-    <i class="fa-xl fa-solid fa-trash-can"></i>
+    <i class="archive-button fa-xl fa-solid fa-box-archive"></i>
+    <i class="unset-button fa-xl fa-solid fa-rotate-left"></i>
+    <i class="trash-button fa-xl fa-solid fa-trash-can"></i>
   </div>
   `)
 

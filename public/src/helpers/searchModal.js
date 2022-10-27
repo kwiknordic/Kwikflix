@@ -4,6 +4,7 @@ import { storeSearch } from "../search/controller.js"
 export function showTemplate() {
   let template = searchTemplate()
   let modal = template.content.cloneNode(true)
+  document.body.classList.toggle("overflow-hidden")
   document.body.prepend(modal)
 }
 

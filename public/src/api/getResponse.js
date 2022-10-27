@@ -35,8 +35,6 @@ async function searchKeywords(query, currentPage = 1) {
       return obj
     })
 
-    console.log(results)
-
   return {
     page: jsonResponse.page,
     total_pages: jsonResponse.total_pages,
@@ -112,7 +110,7 @@ async function getLists(endpoint, node, currentPage = 1, callback) {
 
 async function getImgProps() {
   let response = await getLists("main", "configuration")
-  let imgURL = response.images.base_url
+  let imgURL = response.images.secure_base_url
   let imgSizes = response.images.backdrop_sizes
 
   return {

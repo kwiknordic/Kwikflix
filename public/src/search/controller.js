@@ -7,11 +7,14 @@ import { filterObserver } from "../helpers/filterObserver.js"
 function initialize() {
   if (!window.location.pathname.includes("search")) return;
 
-  if (!response) return;
-  response.forEach(entry => {
-    view.renderEntryElements(entry)
-    view.populateEntryContent(entry)
-  })
+  try {
+    response.forEach(entry => {
+      view.renderEntryElements(entry)
+      view.populateEntryContent(entry)
+    })
+  } catch (err) {
+    view.noRenderMessage()
+  }
 
   eventDelegation()
   filterObserver("data-media")
