@@ -24,7 +24,7 @@ function addAttributes(id, media) {
 
 function addBackgroundPic({ imgSizes, imgURL, backdrop }) {
   let imgSize = imgSizes.at(-1)
-  container.style.backgroundImage = `url("${imgURL}${imgSize}${backdrop}"`
+  container.parentElement.style.backgroundImage = `url("${imgURL}${imgSize}${backdrop}"`
 }
 
 function addTextContent({ title, overview }) {
