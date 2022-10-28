@@ -1,5 +1,5 @@
 import { addRatingStars } from "../helpers/addRatingStars.js"
-import { removeEntry } from "./controller.js"
+//import { removeEntry, saveEntry } from "./controller.js"
 
 export function toggleActionBtn(id, status) {
   const parent = document.querySelector(`[data-id="${id}"]`)
@@ -7,7 +7,7 @@ export function toggleActionBtn(id, status) {
   const unsetButton = parent.querySelector(".unset-button")
 
   if (status === "trash") {
-    removeEntry(id)
+    //removeEntry(id)
     parent.style.display = "none"
     return;
   }
@@ -15,7 +15,9 @@ export function toggleActionBtn(id, status) {
   if (status === "archived") {
     archiveButton.classList.add("hidden")
     unsetButton.classList.remove("hidden")
-  } else {
+  }
+
+  if (status === "TBS") {
     unsetButton.classList.add("hidden")
     archiveButton.classList.remove("hidden")
   }

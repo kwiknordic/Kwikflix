@@ -44,9 +44,11 @@ function buttonActionsObserver(id) {
 }
 
 function saveEntry(id, media, status) {
+  console.log("Here I am, in saveEntry")
+
   let userList;
   let newEntry = {
-    id,
+    id: Number(id),
     data: { id, media, status }
   }
 

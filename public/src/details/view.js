@@ -9,9 +9,12 @@ function addAttributes(id, type) {
 }
 
 function disableButton(id) {
-  if (!isEntryAdded(id)) return;
   let button = document.querySelector("#add-to-list")
-  button.disabled = "true"
+  if (isEntryAdded(id)) {
+    button.disabled = "true"
+    return
+  }
+  button.removeAttribute("disabled")
 }
 
 function showPoster({ title, imgSizes, imgURL, poster }) {

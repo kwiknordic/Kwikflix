@@ -1,5 +1,5 @@
 import { storeRequest } from "../details/controller.js"
-import { saveEntry } from "../list/controller.js"
+import { saveEntry, removeEntry } from "../list/controller.js"
 import { showTrailerModal } from "./trailerModal.js"
 import { showTemplate, submitSearch } from "../helpers/searchModal.js"
 import { getAttributeNameOf } from "./getAttributeNameOf.js"
@@ -68,13 +68,19 @@ export function eventDelegation() {
 
     // Handle actionButtons in MyList-page
     if (e.target.parentElement.classList.contains("actions")) {
+      let archiveBtns = ["archive-button", "unset-button"]
       let btn = e.target
       let result = getAttributes(el, "data-id")
       if (!result) return;
-      let { id, media } = result
+      let { id, media, elem } = result
       let status;
 
-      let archiveBtns = ["archive-button", "unset-button", "trash-button"]
+      if (btn.classList.contains("trash-button")) {
+        elem.dataset.status = "trash"
+        removeEntry(id)
+        return
+      }
+
       if (archiveBtns.some(cls => btn.classList.contains(cls))) {
         updateArchiveStatus()
         return
@@ -83,12 +89,9 @@ export function eventDelegation() {
       function updateArchiveStatus() {
         btn.classList.contains("archive-button") ?
           status = "archived" :
-        btn.classList.contains("unset-button") ?
-          status = "TBS" :
-          status = "trash"
+          status = "TBS"
   
-        let entry = result.elem
-        entry.dataset.status = status
+        elem.dataset.status = status
         saveEntry(id, media, status)
       }
     }
