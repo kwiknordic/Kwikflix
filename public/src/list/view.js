@@ -1,5 +1,5 @@
 import { addRatingStars } from "../helpers/addRatingStars.js"
-//import { removeEntry, saveEntry } from "./controller.js"
+let main = document.body.querySelector("main")
 
 export function toggleActionBtn(id, status) {
   const parent = document.querySelector(`[data-id="${id}"]`)
@@ -24,7 +24,7 @@ export function toggleActionBtn(id, status) {
 }
 
 export function renderEntryElements({ id, media, status }) {
-  let target = document.body.querySelector("main")
+  let main = document.body.querySelector("main")
   let template = entryTemplate()
   let content = template.content.firstElementChild
   content.dataset.id = id
@@ -32,7 +32,7 @@ export function renderEntryElements({ id, media, status }) {
   content.dataset.status = status
 
   let entry = template.content.cloneNode(true)
-  target.append(entry)
+  main.append(entry)
 }
 
 export function populateEntryContent({ id, title, rating, releaseDate, genres, media }) {
@@ -52,6 +52,12 @@ export function populateEntryContent({ id, title, rating, releaseDate, genres, m
   genres = genres.map(genre => genre.name)
   const formatter = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
   genresElem.textContent += formatter.format(genres)
+}
+
+export function noRenderMessage() {
+  let notice = document.createElement("p")
+  notice = "There are no saved entries. Please add something to the list."
+  main.append(notice)
 }
 
 function entryTemplate() {

@@ -16,7 +16,7 @@
 
 body {
   position: relative;
-  background-color:rgb(29, 29, 29)
+  background-color:rgb(16, 16, 16);
 }
 
 [data-link-forward|="true"], aside ul li, i {
@@ -100,7 +100,6 @@ button#add-to-list:disabled::before {
 /* Footer CSS */
 
 #footer {
-  margin-top: 8vh;
   position: relative;
   padding: 3vh 5vw 3vh 5vw;
   box-shadow: 0 4px 0px 0 rgb(37, 37, 37);

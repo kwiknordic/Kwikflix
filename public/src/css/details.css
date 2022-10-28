@@ -1,13 +1,17 @@
 #header {
-  position: relative;
-  width: 100%;
-  padding: 3vh 5vw 3vh 5vw;
+  padding-inline: 5vw;
+  padding-block: 3vh;
   display: flex;
   align-items: center;
   place-content: space-between;
-  margin-bottom: 2rem;
   box-shadow: 0 0px 4px 0 rgb(37, 37, 37);
   background-color:rgb(16, 16, 16);
+}
+
+main {
+  background-color:rgb(29, 29, 29);
+  padding-inline: 5vw;
+  padding-block: 6vh;
 }
 
 main .poster {
@@ -42,7 +46,6 @@ article .subheading {
 
 @media (min-width: 768px) {
   main {
-    padding: 3vh 5vw 0vh 5vw;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;

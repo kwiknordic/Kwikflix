@@ -13,17 +13,22 @@ const initialize = function() {
 }
 
 function renderEntries() {
-  const userList = model.getUserList()
-  if (!userList) return;
+  try {
+    const userList = model.getUserList()
+    //if (!userList) return;
 
-  Promise.all(userList).then( results => {
-    results.forEach(entry => {
-      view.renderEntryElements(entry)
-      view.populateEntryContent(entry)
-      view.toggleActionBtn(entry.id, entry.status)
-      buttonActionsObserver(entry.id)
+    Promise.all(userList).then( results => {
+      results.forEach(entry => {
+        view.renderEntryElements(entry)
+        view.populateEntryContent(entry)
+        view.toggleActionBtn(entry.id, entry.status)
+        buttonActionsObserver(entry.id)
+      })
     })
-  })
+  } catch (e) {
+    console.log("failed try")
+    view.noRenderMessage()
+  }
 }
 
 function buttonActionsObserver(id) {
@@ -44,8 +49,6 @@ function buttonActionsObserver(id) {
 }
 
 function saveEntry(id, media, status) {
-  console.log("Here I am, in saveEntry")
-
   let userList;
   let newEntry = {
     id: Number(id),

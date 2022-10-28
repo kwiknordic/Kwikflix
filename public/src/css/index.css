@@ -5,12 +5,12 @@
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
+  padding-inline: 5vw;
+  padding-bottom: 15vh;
 }
 
 #header {
-  position: relative;
-  width: 100%;
-  padding: 3vh 5vw 3vh 5vw;
+  padding-block: 3vh;
   display: flex;
   align-items: center;
   place-content: space-between;
@@ -19,11 +19,9 @@
 /* Hero-section */
 
 #hero-section {
-  padding: 5vh 5vw 15vh 5vw;
   display: grid;
   grid-template-rows: auto;
   row-gap: 1rem;
-/*   min-height: calc(30vh); */
   place-content: center start;
 }
 
@@ -34,10 +32,10 @@
 /* slider */
 
 .trending-now-container {
+  background-color:rgb(29, 29, 29);
   position: relative;
-  padding-left: 5vw;
-  padding-right: 5vw;
-  padding-top: 6vh;
+  padding-inline: 5vw;
+  padding-block: 3vh;
 }
 
 .trending-now-container h3 {
