@@ -8,6 +8,14 @@
   background-color:rgb(16, 16, 16);
 }
 
+.subheading > span {
+  display: block;
+}
+
+.subheading em {
+  display: none;
+}
+
 main {
   background-color:rgb(29, 29, 29);
   padding-inline: 5vw;
@@ -71,5 +79,15 @@ article .subheading {
 
   article .subheading {
     margin-top: unset;
+  }
+
+  article .subheading > span {
+    display: unset;
+  }
+
+  article .subheading em {
+    display: unset;
+    font-style: normal;
+    color: gray;
   }
 }

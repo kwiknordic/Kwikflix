@@ -48,7 +48,7 @@ export function combineData(obj, media) {
     const tvSpecific = {
       title: obj.original_name,
       releaseDate: obj.first_air_date,
-      runTime: obj.last_episode_to_air.runtime
+      runTime: obj.last_episode_to_air?.runtime
     }
   
     data = Object.assign({}, general, tvSpecific)

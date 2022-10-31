@@ -44,7 +44,7 @@ function buttonActionsObserver(id) {
 
     if (attribute !== "data-status") return;
     view.toggleActionBtn(id, status)
-    showNotification()
+    showNotification(status)
   });
 
   observer.observe(entry, { attributes: true });
