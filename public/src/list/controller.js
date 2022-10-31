@@ -16,8 +16,6 @@ const initialize = function() {
 function renderEntries() {
   try {
     const userList = model.getUserList()
-    //if (!userList) return;
-
     Promise.all(userList).then( results => {
       results.forEach(entry => {
         view.renderEntryElements(entry)
@@ -27,7 +25,6 @@ function renderEntries() {
       })
     })
   } catch (e) {
-    console.log("failed try")
     view.noRenderMessage()
   }
 }

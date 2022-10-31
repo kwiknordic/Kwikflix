@@ -17,6 +17,7 @@
 }
 
 main {
+  flex-grow: 1;
   background-color:rgb(29, 29, 29);
   padding-inline: 5vw;
   padding-block: 6vh;
