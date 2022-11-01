@@ -1,7 +1,7 @@
 import { storeRequest } from "../details/controller.js"
 import { saveEntry, removeEntry } from "../list/controller.js"
-import { showTrailerModal } from "./trailerModal.js"
-import { showTemplate, submitSearch } from "../helpers/searchModal.js"
+import { showTrailerModal } from "../components/trailerModal.js"
+import { showTemplate, submitSearch } from "../components/searchModal.js"
 import { getAttributeNameOf } from "./getAttributeNameOf.js"
 
 export function eventDelegation() {

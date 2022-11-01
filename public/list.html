@@ -14,17 +14,21 @@
 <body>
   
   <!-- Has to be loaded after body-tag -->
-  <script src="./src/helpers/loading-icon.js"></script>
+  <script src="./src/components/loading-icon.js"></script>
   <!-- Hides body-tag while loading -->
 
-  <header id="header">
-    <div class="logo">
-      <a href="./">Kwikflix</a>
-    </div>
-    <div class="right-navbar">
+<header class="header-box">
+  <div class="logo">
+    <a href="./">Kwikflix</a>
+  </div>
+  <nav class="right-navbar">
+    <div class="search">
         <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-        <a href="./list.html"><i class="fa-regular fa-user fa-lg"></i></a>
-    </div>
+      </div>
+    <a href="./list.html">
+        <i class="fa-regular fa-user fa-lg"></i>
+    </a>
+  </nav>
 </header>
 
 <div class="wrapper">
@@ -36,14 +40,13 @@
       <li>Archived</li>
     </ul>
   </aside>
-  
   <main></main>
 </div>
 
-<footer id="footer">
+<footer>
   <div class="main">
       <a href="./"><img src="./src/resources/logo.png" alt="Kwik"></a>
-      <div class="footer-menu">
+      <nav class="footer-menu"></nav>
   </div>
 </footer>
 

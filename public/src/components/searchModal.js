@@ -24,6 +24,7 @@ function searchTemplate() {
   let template = document.createElement("template")
   let content = document.createElement("div")
   content.classList.add("modalView")
+  content.classList.add("searchModal")
 
   content.insertAdjacentHTML("afterbegin", `
     <i class="fa fa-close close"></i>

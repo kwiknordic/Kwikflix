@@ -26,15 +26,11 @@ export function populateEntryContent({ id, title, rating, releaseDate, genres, m
   mediaElem.textContent = `(${media})`
   releasedElem.textContent = `${releaseDate.slice(0,4)}`
   ratingElem.innerHTML = addRatingStars(rating)
-
-/*   genres = genres.map(genre => genre.name)
-  const formatter = new Intl.ListFormat('en', { style: 'long', type: 'conjunction' });
-  genresElem.textContent += formatter.format(genres) */
 }
 
 function entryTemplate() {
   let template = document.createElement("template")
-  let content = document.createElement("div")
+  let content = document.createElement("article")
   content.classList.add("entry")
 
   content.insertAdjacentHTML("afterbegin", `

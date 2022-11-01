@@ -1,7 +1,7 @@
 import { addRatingStars } from "../helpers/addRatingStars.js"
 import { isEntryAdded } from "../helpers/isEntryAdded.js"
 
-let mainElem = document.querySelector("article")
+let mainElem = document.querySelector("main")
 
 function addAttributes(id, type) {
   mainElem.dataset.id = id

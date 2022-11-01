@@ -1,8 +1,8 @@
-let footer = document.getElementById("footer")
-let footerMain = footer.querySelector(".main")
+let footer = document.querySelector("footer")
+//let footerMain = footer.querySelector(".main")
 
 function addLinks(menu) {
-  let footerLinks = footerMain.querySelector(".footer-menu")
+  let footerLinks = footer.querySelector(".footer-menu")
 
   for (let parent in menu) {
     let container = document.createElement("details")
@@ -30,7 +30,7 @@ function makeResponsive() {
 
   function openFooterMenus() {
     if (!isDesktop()) return;
-    let allDetails = footerMain.querySelectorAll("details")
+    let allDetails = footer.querySelectorAll("details")
     allDetails.forEach( detail => detail.setAttribute("open", ""))
   }
 

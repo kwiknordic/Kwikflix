@@ -7,7 +7,6 @@ export function toggleActionBtn(id, status) {
   const unsetButton = parent.querySelector(".unset-button")
 
   if (status === "trash") {
-    //removeEntry(id)
     parent.style.display = "none"
     return;
   }
@@ -62,7 +61,7 @@ export function noRenderMessage() {
 
 function entryTemplate() {
   let template = document.createElement("template")
-  let content = document.createElement("div")
+  let content = document.createElement("article")
   content.classList.add("entry")
 
   content.insertAdjacentHTML("afterbegin", `

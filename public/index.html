@@ -15,21 +15,23 @@
 <body>
 
   <!-- Has to be loaded after body-tag -->
-  <script src="./src/helpers/loading-icon.js"></script>
+  <script src="./src/components/loading-icon.js"></script>
   <!-- Hides body-tag while loading -->
 
-<div id="header-wrapper">
-    <header id="header">
+<header class="header-transparent">
+    <div id="header-container">
         <div class="logo">
             <a href="./">Kwikflix</a>
         </div>
-        <div class="right-navbar">
+        <nav class="right-navbar">
             <div class="search">
                 <i class="fa-solid fa-magnifying-glass fa-lg"></i>
               </div>
-            <a href="./list.html"><i class="fa-regular fa-user fa-lg"></i></a>
-        </div>
-    </header>
+            <a href="./list.html">
+                <i class="fa-regular fa-user fa-lg"></i>
+            </a>
+        </nav>
+    </div>
 
     <div id="hero-section">
       <span id="rating"></span>
@@ -40,8 +42,9 @@
           <button id="add-to-list">My list</button>
       </div>
     </div>
-</div>
+</header>
 
+<div class="wrapper">
     <div class="trending-now-container">
         <h3>Trending movies on Kwikflix</h3>
         <div class="slider"></div>
@@ -50,13 +53,14 @@
         <h3>Trending series on Kwikflix</h3>
         <div class="slider"></div>
     </div>
+</div>
 
-    <footer id="footer">
-        <div class="main">
-            <a href="./"><img src="./src/resources/logo.png" alt="Kwik"></a>
-            <div class="footer-menu">
-        </div>
-    </footer>
+<footer>
+    <div class="main">
+        <a href="./"><img src="./src/resources/logo.png" alt="Kwik"></a>
+        <nav class="footer-menu"></nav>
+    </div>
+</footer>
 
 </body>
 </html>

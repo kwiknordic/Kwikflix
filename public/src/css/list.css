@@ -1,15 +1,5 @@
-#header {
-  padding-inline: 5vw;
-  padding-block: 3vh;
-  display: flex;
-  align-items: center;
-  place-content: space-between;
-  box-shadow: 0 0px 4px 0 rgb(37, 37, 37);
-}
-
 .wrapper {
   display: flex;
-  flex-grow: 1;
   flex-direction: column;
   flex-wrap: nowrap;
   padding-inline: 5vw;
@@ -18,7 +8,7 @@
   background-color:rgb(29, 29, 29);
 }
 
-.wrapper aside h2 {
+aside h2 {
   margin-bottom: 0.5rem;
   cursor: default;
 }
@@ -29,14 +19,14 @@
   font-weight: 600;
 }
 
-.wrapper aside {
+aside {
   padding-bottom: 1rem;
   border-bottom: 1px solid red;
   width: 100%;
   justify-content: center;
 }
 
-.wrapper aside ul {
+aside ul {
   font-size: 1.2rem;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
@@ -44,7 +34,7 @@
   place-content: space-between;
 }
 
-.wrapper aside li {
+aside li {
   list-style: none;
   display: inline;
   padding-inline: 1rem;
@@ -54,7 +44,7 @@
   border-radius: 5px;
 }
 
-.entry {
+article {
   display: flex;
   flex-direction: column;
   padding-bottom: 3rem;
@@ -63,16 +53,16 @@
   place-content: space-between;
 }
 
-.entry .details > * {
+.details > * {
   padding-bottom: 0.2rem;
 }
 
-.entry em {
+em {
   font-style: normal;
   color: grey;
 }
 
-.entry .actions {
+.actions {
   padding-top: 2rem;
   padding-inline: 0.5rem;
   display: flex;
@@ -85,13 +75,13 @@
     flex-direction: row;
     }
 
-  .wrapper main {
+  main {
     display: flex;
     flex-direction: column;
     width: 100%;
   }
 
-  .wrapper aside {
+  aside {
     flex-basis: calc(20%);
     border-right: 1px solid red;
     width: unset;
@@ -100,7 +90,7 @@
     padding-bottom: unset;
   }
 
-  .wrapper aside ul {
+  aside ul {
     font-size: unset;
     padding-top: unset;
     padding-bottom: unset;
@@ -108,7 +98,7 @@
     place-content: unset;
   }
 
-  .wrapper aside ul li {
+  aside ul li {
     display: block;
     padding-inline: unset;
     background-color: unset;
@@ -116,13 +106,13 @@
     border-radius: unset;
   }
 
-  .entry {
+  article {
     flex-direction: row;
     padding-bottom: 1.5rem;
     margin-bottom: 1.5rem;
   }
 
-  .entry .actions {
+  .actions {
     padding-top: unset;
     align-self: center;
     gap: 2rem;

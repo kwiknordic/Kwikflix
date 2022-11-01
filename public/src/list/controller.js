@@ -1,7 +1,7 @@
 import * as model from "./model.js"
 import * as view from "./view.js"
 import { init as footer } from "../footer/controller.js"
-import { showNotification } from "../helpers/notificationBar.js"
+import { showNotification } from "../components/notificationBar.js"
 import { eventDelegation } from "../helpers/eventListeners.js"
 import { filterObserver } from "../helpers/filterObserver.js"
 
