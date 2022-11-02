@@ -75,6 +75,7 @@ async function searchLists(id, node, detail) {
 }
 
 async function getLists(endpoint, node, currentPage = 1, callback) {
+  console.log("from inside")
   if (!endpoint || !node) throw Error("Node or endpoint is not correct")
 
   let root = endpoints[node].rootDir

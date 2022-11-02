@@ -1,5 +1,6 @@
 import { addRatingStars } from "../helpers/addRatingStars.js"
 import { isEntryAdded } from "../helpers/isEntryAdded.js"
+import { containerWidth } from "../helpers/containerWidth.js"
 
 let mainElem = document.querySelector("main")
 
@@ -17,14 +18,11 @@ function disableButton(id) {
   button.removeAttribute("disabled")
 }
 
-function showPoster({ title, imgSizes, imgURL, poster }) {
-  let image = document.body.querySelector("img")
-
-  // imgsize, TODO: use different sizes depending on media-screen
-  let size = imgSizes.at(-1)
-  
+function showPoster({ title, imgURL, poster }) {
+  const container = document.querySelector("aside")
+  const image = document.body.querySelector("img")
   image.alt = title
-  image.src = `${imgURL}${size}${poster}`
+  image.src = `${imgURL}${containerWidth(container)}${poster}`
 }
 
 function showContent(

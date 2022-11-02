@@ -1,5 +1,4 @@
 let footer = document.querySelector("footer")
-//let footerMain = footer.querySelector(".main")
 
 function addLinks(menu) {
   let footerLinks = footer.querySelector(".footer-menu")
@@ -29,7 +28,7 @@ function addLinks(menu) {
 function makeResponsive() {
 
   function openFooterMenus() {
-    if (!isDesktop()) return;
+    if (document.body.clientWidth < 768) return;
     let allDetails = footer.querySelectorAll("details")
     allDetails.forEach( detail => detail.setAttribute("open", ""))
   }
@@ -44,11 +43,6 @@ function copyRightPlaceholder() {
   container.id = "footer-copyright"
   container.textContent = "This product uses the TMDB API but is not endorsed or certified by TMDB."
   footer.append(container)
-}
-
-function isDesktop() {
-  let width = document.body.clientWidth
-  return width > 768 ? true : false
 }
 
 export { 

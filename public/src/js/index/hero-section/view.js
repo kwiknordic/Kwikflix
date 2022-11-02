@@ -1,4 +1,5 @@
 import { isEntryAdded } from "../../helpers/isEntryAdded.js"
+import { containerWidth } from "../../helpers/containerWidth.js"
 
 let container = document.querySelector("#hero-section")
 
@@ -25,9 +26,8 @@ function addAttributes(id, media) {
   container.dataset.media = media
 }
 
-function addBackgroundPic({ imgSizes, imgURL, backdrop }) {
-  let imgSize = imgSizes.at(-1)
-  container.parentElement.style.backgroundImage = `url("${imgURL}${imgSize}${backdrop}"`
+function addBackgroundPic({ imgURL, backdrop }) {
+  container.parentElement.style.backgroundImage = `url("${imgURL}${containerWidth(document.body)}${backdrop}"`
 }
 
 function addTextContent({ title, overview }) {

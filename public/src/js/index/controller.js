@@ -6,8 +6,8 @@ import { renderFooter } from "../components/footer/controller.js"
 import { eventDelegation } from "../helpers/eventListeners.js"
 
 renderHeroSection(topResult)
-renderSlider("first", getList("movies", "trending"))
-renderSlider("second", getList("tv", "trending"))
+renderSlider("movie-slider", getList("movies", "trending"))
+renderSlider("tv-slider", getList("tv", "trending"))
 
 renderFooter()
 eventDelegation()
