@@ -1,16 +1,18 @@
 import { returnSpecificData } from "../helpers/combineData.js"
 
-function getRawUserList() {
-  if (!localStorage.userList) return
-  return JSON.parse(localStorage.userList)
+const unmodifiedUserList = {
+  get: function() {
+    if (!localStorage.userList) return
+    return JSON.parse(localStorage.userList)
+  },
+  
+  set: function(userList) {
+    localStorage.setItem('userList', JSON.stringify(userList))
+  }
 }
 
-function setRawUserList(userList) {
-  localStorage.setItem('userList', JSON.stringify(userList))
-}
-
-function getUserList() {
-  let userList = getRawUserList()
+function mappedUserList() {
+  let userList = unmodifiedUserList.get()
   userList = userList.map( entry => {
     let data = entry.data
     let { id, media, status } = data
@@ -26,7 +28,6 @@ function getUserList() {
 }
 
 export {
-  getRawUserList,
-  setRawUserList,
-  getUserList,
+  unmodifiedUserList,
+  mappedUserList,
 }

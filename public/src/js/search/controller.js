@@ -1,12 +1,10 @@
 import { response } from "./model.js"
 import * as view from "./view.js"
-import { init as footer } from "../footer/controller.js"
+import { renderFooter } from "../components/footer/controller.js"
 import { eventDelegation } from "../helpers/eventListeners.js"
 import { filterObserver } from "../helpers/filterObserver.js"
 
-function initialize() {
-  if (!window.location.pathname.includes("search")) return;
-
+const renderEntries = function() {
   try {
     response.forEach(entry => {
       view.renderEntryElements(entry)
@@ -15,15 +13,16 @@ function initialize() {
   } catch (err) {
     view.noRenderMessage()
   }
+}
 
+const initialize = function() {
+  if (!window.location.pathname.includes("search")) return;
+  
+  renderEntries()
   eventDelegation()
   filterObserver("data-media")
-  footer()
+  renderFooter()
 }
 
-export function storeSearch(response) {
-  localStorage.setItem('searchQuery', JSON.stringify(response))
-  window.location.assign("./search.html")
-}
-
+// Run
 initialize()

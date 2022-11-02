@@ -1,8 +1,10 @@
 import { footerMenuLinks } from "./model.js"
 import * as view from "./view.js"
 
-export function init() {
+const renderFooter = function() {
   view.addLinks(footerMenuLinks)
   view.makeResponsive()
   view.copyRightPlaceholder()
 }
+
+export { renderFooter }

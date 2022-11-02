@@ -1,21 +1,13 @@
 import * as model from "./model.js"
 import * as view from "./view.js"
-import { init as footer } from "../footer/controller.js"
+import { renderFooter } from "../components/footer/controller.js"
 import { showNotification } from "../components/notificationBar.js"
 import { eventDelegation } from "../helpers/eventListeners.js"
 import { filterObserver } from "../helpers/filterObserver.js"
 
-const initialize = function() {
-  if (!window.location.pathname.includes("list")) return;
-  renderEntries()
-  eventDelegation()
-  filterObserver("data-status")
-  footer()
-}
-
-function renderEntries() {
+const renderEntries = function() {
   try {
-    const userList = model.getUserList()
+    const userList = model.mappedUserList()
     Promise.all(userList).then( results => {
       results.forEach(entry => {
         view.renderEntryElements(entry)
@@ -29,7 +21,18 @@ function renderEntries() {
   }
 }
 
-function buttonActionsObserver(id) {
+const initialize = function() {
+  if (!window.location.pathname.includes("list")) return;
+  renderEntries()
+  eventDelegation()
+  filterObserver("data-status")
+  renderFooter()
+}
+
+// Run
+initialize()
+
+const buttonActionsObserver = function(id) {
   const entry = document.querySelector(`[data-id="${id}"]`)
 
   const observer = new MutationObserver( e => {
@@ -47,37 +50,33 @@ function buttonActionsObserver(id) {
   observer.observe(entry, { attributes: true });
 }
 
-function saveEntry(id, media, status) {
-  let userList;
-  let newEntry = {
-    id: Number(id),
-    data: { id, media, status }
+// Saving/deleting listEntries used by EventListeners
+export const handleListEntries = {
+  saveEntry: function(id, media, status) {
+    let userList;
+    let newEntry = {
+      id: Number(id),
+      data: { id, media, status }
+    }
+  
+    // First time
+    if (!model.unmodifiedUserList.get()) {
+      userList = [newEntry]
+      model.unmodifiedUserList.set(userList)
+      return
+    }
+  
+    // Repeating times
+    let database = model.unmodifiedUserList.get()
+    const uniqueEntries = database.filter(entry => entry.id !== newEntry.id)
+  
+    userList = [...uniqueEntries, newEntry]
+    model.unmodifiedUserList.set(userList)
+  },
+  
+  removeEntry: function(id) {
+    let userList = model.unmodifiedUserList.get()
+    userList = userList.filter(entry => entry.id !== id)
+    model.unmodifiedUserList.set(userList)
   }
-
-  // First time
-  if (!model.getRawUserList()) {
-    userList = [newEntry]
-    model.setRawUserList(userList)
-    return
-  }
-
-  // Repeating times
-  let database = model.getRawUserList()
-  const uniqueEntries = database.filter(entry => entry.id !== newEntry.id)
-
-  userList = [...uniqueEntries, newEntry]
-  model.setRawUserList(userList)
-}
-
-function removeEntry(id) {
-  let userList = model.getRawUserList()
-  userList = userList.filter(entry => entry.id !== id)
-  model.setRawUserList(userList)
-}
-
-initialize()
-
-export {
-  saveEntry,
-  removeEntry,
 }

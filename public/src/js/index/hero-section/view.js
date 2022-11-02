@@ -2,7 +2,7 @@ import { isEntryAdded } from "../../helpers/isEntryAdded.js"
 
 let container = document.querySelector("#hero-section")
 
-export function render(dataObj) {
+const renderHeroSection = function(dataObj) {
   let { id, mediaType } = dataObj
 
   addBackgroundPic(dataObj)
@@ -37,3 +37,5 @@ function addTextContent({ title, overview }) {
   titleElem.textContent = title
   overviewElem.textContent = overview
 }
+
+export { renderHeroSection }

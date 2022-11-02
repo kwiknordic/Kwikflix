@@ -1,5 +1,4 @@
 import { searchKeywords } from "../api/getResponse.js"
-import { storeSearch } from "../search/controller.js"
 
 export function showTemplate() {
   let template = searchTemplate()
@@ -13,9 +12,14 @@ export function submitSearch(element) {
   let input = container.querySelector("input")
   let query = input.value
 
+  function saveResponse(response) {
+    localStorage.setItem('searchQuery', JSON.stringify(response))
+  }
+
   searchKeywords(query)
     .then( results => {
-      storeSearch(results)
+      saveResponse(results)
+      window.location.assign("./search.html")
     })
 }
 

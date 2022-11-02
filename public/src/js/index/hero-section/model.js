@@ -7,7 +7,7 @@ let firstResult = response.results[0]
 // Get image-meta data
 let imgProps = await getImgProps()
 
-export const data = {
+export const topResult = {
   id: firstResult.id,
   title: firstResult.title,
   mediaType: firstResult.media_type,

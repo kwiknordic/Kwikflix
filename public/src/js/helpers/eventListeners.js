@@ -1,5 +1,5 @@
 import { storeRequest } from "../details/controller.js"
-import { saveEntry, removeEntry } from "../list/controller.js"
+import { handleListEntries } from "../list/controller.js"
 import { showTrailerModal } from "../components/trailerModal.js"
 import { showTemplate, submitSearch } from "../components/searchModal.js"
 import { getAttributeNameOf } from "./getAttributeNameOf.js"
@@ -23,7 +23,7 @@ export function eventDelegation() {
       if (!result) return;
       let { id, media } = result
       let status = "TBS"
-      saveEntry(id, media, status)
+      handleListEntries.saveEntry(id, media, status)
       el.disabled = "true"
       return;
     };
@@ -55,6 +55,7 @@ export function eventDelegation() {
       if (!result) return;
       let { id, media } = result
       storeRequest(id, media)
+      window.location.assign("./details.html")
       return;
     }
 
@@ -77,7 +78,7 @@ export function eventDelegation() {
 
       if (btn.classList.contains("trash-button")) {
         elem.dataset.status = "trash"
-        removeEntry(id)
+        handleListEntries.removeEntry(id)
         return
       }
 
@@ -92,7 +93,7 @@ export function eventDelegation() {
           status = "TBS"
   
         elem.dataset.status = status
-        saveEntry(id, media, status)
+        handleListEntries.saveEntry(id, media, status)
       }
     }
 

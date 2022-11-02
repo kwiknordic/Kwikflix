@@ -1,11 +1,9 @@
 import { result } from "./model.js"
 import * as view from "./view.js"
 import { eventDelegation } from "../helpers/eventListeners.js"
-import { init as footer } from "../footer/controller.js"
+import { renderFooter } from "../components/footer/controller.js"
 
-function initialize() {
-  if (!window.location.pathname.includes("details")) return;
-
+const renderEntries = function() {
   try {
     view.addAttributes(result.id, result.media)
     view.showPoster(result)
@@ -14,19 +12,20 @@ function initialize() {
   } catch (e) {
     window.location.assign("./")
   }
+}
 
-  footer()
+function initialize() {
+  if (!window.location.pathname.includes("details")) return;
+
+  renderEntries()
+  renderFooter()
   eventDelegation()
 }
 
-export function storeRequest(id, media) {
-  let reqData = {
-    id,
-    media,
-    }
-
-  localStorage.setItem('reqData', JSON.stringify(reqData))
-  window.location.assign("./details.html")
-}
-
+// Run
 initialize()
+
+// Save request when triggered by EventListener
+export function storeRequest(id, media) {
+  localStorage.setItem('reqData', JSON.stringify({id, media}))
+}
