@@ -1,0 +1,35 @@
+@import "../global.css";
+@import "../components/filter.css";
+
+.wrapper {
+  background-color: var(--main-dark-color);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 2.5rem;
+}
+
+article {
+  flex-direction: column;
+}
+
+.actions {
+  padding-top: 2rem;
+  padding-inline: 0.5rem;
+  display: flex;
+  gap: 3rem;
+}
+
+@media (min-width: 768px) {
+
+  article {
+    flex-direction: row;
+  }
+
+  .actions {
+    padding-top: unset;
+    align-self: center;
+    gap: 2rem;
+  }
+
+}

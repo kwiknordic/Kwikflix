@@ -5,16 +5,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="initial-scale=1, viewport-fit=cover" initial-scale="1.0">
   <title>Search results</title>
-  <script src="./src/search/controller.js" type="module"></script>
+  <script src="./src/js/search/controller.js" type="module"></script>
   <script src="https://kit.fontawesome.com/3cc19dad8c.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="./src/css/universal.css">
-  <link rel="stylesheet" href="./src/css/search.css">
+  <link rel="stylesheet" href="./src/css/pages/search.css">
   <link href="./src/resources/favicon.ico" rel="icon" type="image/x-icon" />
 </head>
 <body>
   
   <!-- Has to be loaded after body-tag -->
-  <script src="./src/components/loading-icon.js"></script>
+  <script src="./src/js/components/loading-icon.js"></script>
   <!-- Hides body-tag while loading -->
 
 <header class="header-box">
@@ -31,8 +30,8 @@
     </nav>
 </header>
 
-<div class="wrapper">
-  <aside>
+<div class="wrapper wrapper-padding">
+  <aside class="filter">
     <h2>Filter</h2>
     <ul>
       <li class="all">All</li>

@@ -15,7 +15,6 @@ export function submitSearch(element) {
 
   searchKeywords(query)
     .then( results => {
-      console.log(results)
       storeSearch(results)
     })
 }

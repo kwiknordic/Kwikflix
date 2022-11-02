@@ -1,3 +1,5 @@
+@import "../global.css";
+
 #header-container {
   padding-block: 3vh;
   display: flex;

@@ -1,0 +1,19 @@
+@import "../global.css";
+@import "../components/filter.css";
+
+.wrapper {
+  background-color: var(--main-dark-color);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 2.5rem;
+}
+
+article {
+  flex-direction: row;
+}
+
+.actions {
+  padding-inline: 2rem 0.5rem;
+  align-self: center;
+}
