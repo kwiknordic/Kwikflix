@@ -1,5 +1,13 @@
 @import "../global.css";
 
+header {
+  margin-bottom: 5vh;
+}
+
+footer {
+  margin-top: 5vh;
+}
+
 #header-container {
   padding-block: 3vh;
   display: flex;

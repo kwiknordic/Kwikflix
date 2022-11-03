@@ -8,6 +8,7 @@ import { eventDelegation } from "../helpers/eventListeners.js"
 renderHeroSection(topResult)
 renderSlider("movie-slider", getList("movies", "trending"))
 renderSlider("tv-slider", getList("tv", "trending"))
+renderSlider("top-rated-slider", getList("topRated", "movies"))
 
 renderFooter()
 eventDelegation()

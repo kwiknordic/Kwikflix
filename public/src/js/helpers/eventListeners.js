@@ -103,14 +103,23 @@ export function eventDelegation() {
 
   document.addEventListener("keyup", e => {
     let el = e.target
-    if (!el.closest("input")) return;
 
     // if ENTER-key is hit as searchSubmit
-    if (e.key === "Enter") {
+    if (el.closest("input")) {
+      if (e.key !== "Enter") return
       submitSearch(el)
       return;
     }
+
+    // if ESC-key is hit when in a modal
+    if (e.key === "Escape") {
+      if (!document.body.classList.contains("overflow-hidden")) return;
+      document.body.classList.toggle("overflow-hidden")
+      document.querySelector(".modalView").remove()
+      return;
+    }
   })
+
 }
 
 function hasLinkForward(element) {
