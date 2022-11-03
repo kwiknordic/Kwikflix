@@ -11,6 +11,8 @@ Utseendet var inspirerat av Netflix. TMDB användes som API-källa.
 - Utgått ifrån ett MVC-designmöster
 - Utgått ifrån en funktionell programmeringsparadigm
 - Tidig return för att minimera belastning
+- Samlade eventListeners för att minimera belastning
+- klick, ENTER och ESC lyssnas efter för diverse funktionalitet
 - Recursion användes för att hitta rätt element
 - Import/Export-moduler i JavaScript och CSS
 - API-förfrågningar med async/await och Promise.all
