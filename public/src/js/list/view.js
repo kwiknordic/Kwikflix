@@ -1,3 +1,4 @@
+import { listEntryTemplate } from "../components/listEntryTemplate.js"
 import { addRatingStars } from "../helpers/addRatingStars.js"
 let main = document.body.querySelector("main")
 
@@ -24,7 +25,7 @@ export function toggleActionBtn(id, status) {
 
 export function renderEntryElements({ id, media, status }) {
   let main = document.body.querySelector("main")
-  let template = entryTemplate()
+  let template = listEntryTemplate()
   let content = template.content.firstElementChild
   content.dataset.id = id
   content.dataset.media = media
@@ -57,34 +58,4 @@ export function noRenderMessage() {
   let notice = document.createElement("p")
   notice = "There are no saved entries. Please add something to the list."
   main.append(notice)
-}
-
-function entryTemplate() {
-  let template = document.createElement("template")
-  let content = document.createElement("article")
-  content.classList.add("entry")
-
-  content.insertAdjacentHTML("afterbegin", `
-  <div class="details">
-    <div class="heading">
-      <span class="title"></span>
-      <em class="media"></em>
-    </div>
-    <div class="subheading">
-      <span class="release"></span>
-      <span>|</span>
-      <span class="rating"></span>
-    </div>
-    <span class="genres"></span>
-  </div>
-  <div class="actions">
-    <i class="fa-xl fa-solid fa-file-lines" data-link-forward="true"></i>
-    <i class="archive-button fa-xl fa-solid fa-box-archive"></i>
-    <i class="unset-button fa-xl fa-solid fa-rotate-left"></i>
-    <i class="trash-button fa-xl fa-solid fa-trash-can"></i>
-  </div>
-  `)
-
-  template.content.append(content)
-  return template
 }

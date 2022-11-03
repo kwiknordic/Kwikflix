@@ -85,9 +85,20 @@ article .details > * {
   padding-bottom: 0.2rem;
 }
 
-article em {
+em {
   font-style: normal;
+}
+
+article em {
   color: grey;
+}
+
+li em {
+  font-size: 0.7rem;
+  padding: 0.1rem 0.4rem;
+  margin-left: 0.5rem;
+  background-color: var(--action-color);
+  border-radius: 50%;
 }
 
 .heading .title {

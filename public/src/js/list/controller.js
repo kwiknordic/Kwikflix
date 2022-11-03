@@ -1,6 +1,7 @@
 import * as model from "./model.js"
 import * as view from "./view.js"
 import { renderFooter } from "../components/footer/controller.js"
+import { showCategoryCount } from "../helpers/showCategoryCount.js"
 import { showNotification } from "../components/notificationBar.js"
 import { eventDelegation } from "../helpers/eventListeners.js"
 import { filterObserver } from "../helpers/filterObserver.js"
@@ -21,9 +22,25 @@ const renderEntries = function() {
   }
 }
 
+const categoryCount = function() {
+  let countStatus = model.unmodifiedUserList.get()
+    .map(entry => entry.data.status)
+    .reduce((total, status, index) => {
+      const count = total[status] ?? 0;
+      return {
+        ...total,
+        [status]: count +1,
+        ["all"]: index +1
+      }
+    }, {})
+
+  showCategoryCount(countStatus)
+}
+
 const initialize = function() {
   if (!window.location.pathname.includes("list")) return;
   renderEntries()
+  categoryCount()
   eventDelegation()
   filterObserver("data-status")
   renderFooter()
@@ -44,6 +61,7 @@ const buttonActionsObserver = function(id) {
 
     if (attribute !== "data-status") return;
     view.toggleActionBtn(id, status)
+    categoryCount()
     showNotification(status)
   });
 

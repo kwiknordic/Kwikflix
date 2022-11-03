@@ -2,7 +2,6 @@ import { storeRequest } from "../details/controller.js"
 import { handleListEntries } from "../list/controller.js"
 import { showTrailerModal } from "../components/trailerModal.js"
 import { showTemplate, submitSearch } from "../components/searchModal.js"
-import { getAttributeNameOf } from "./getAttributeNameOf.js"
 
 export function eventDelegation() {
   document.addEventListener("click", e => {
@@ -61,9 +60,12 @@ export function eventDelegation() {
 
     // toggle attribute based on filter for MutationObserver
     if (e.target.closest("li")) {
-      let listItem = e.target.textContent.toLowerCase()
       let container = e.target.closest("aside")
-      container.dataset.filter = getAttributeNameOf(listItem)
+      let selected = e.target.getAttribute("select")
+      let filter;
+      
+      selected === "all" ? filter = "" : filter = selected
+      container.dataset.filter = filter
       return;
     }
 
