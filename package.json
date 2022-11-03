@@ -1,8 +1,7 @@
 {
   "dependencies": {
     "dotenv": "^16.0.2",
-    "express": "^4.18.1",
-    "gitexporter": "^1.5.3"
+    "express": "^4.18.1"
   },
   "type": "module"
 }

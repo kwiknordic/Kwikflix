@@ -86,22 +86,24 @@ async function getLists(endpoint, node, currentPage = 1) {
   }
 
   if (node == "movies") {
-    response = await fetch(url + 
-                           root + 
-                           endpoint + 
-                           API_KEY + 
-                           lang + 
-                           page + currentPage)
-  }
+    response = await fetch(
+      url + 
+      root + 
+      endpoint + 
+      API_KEY + 
+      lang + 
+      page + currentPage
+    )}
 
   if (node == "trending") {
     let timeWindow = "/day"
-    response = await fetch(url + 
-                           root + 
-                           endpoint + 
-                           timeWindow + 
-                           API_KEY)
-  }
+    response = await fetch(
+      url + 
+      root + 
+      endpoint + 
+      timeWindow + 
+      API_KEY
+    )}
 
   if (!response.ok) throw Error("Response is not ok")
   return response.json()
@@ -119,7 +121,7 @@ async function getImgProps() {
   }
 }
 
-// wrap responses in cache
+// wrap responses in decorator-functions for caching
 getLists = cache(getLists)
 searchLists = cache(searchLists)
 getImgProps = cache(getImgProps)
