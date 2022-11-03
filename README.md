@@ -9,7 +9,7 @@ Utseendet var inspirerat av Netflix. TMDB användes som API-källa.
 
 # Höjdpunkter
 - Utgått ifrån ett MVC-designmöster
-- Utgått ifrån en funktionell programmering
+- Utgått ifrån en funktionell programmeringsparadigm
 - Tidig return för att minimera belastning
 - Recursion användes för att hitta rätt element
 - Import/Export-moduler i JavaScript och CSS
