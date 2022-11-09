@@ -2,6 +2,7 @@ import { storeRequest } from "../details/controller.js"
 import { handleListEntries } from "../list/controller.js"
 import { showTrailerModal } from "../components/trailerModal.js"
 import { showTemplate, submitSearch } from "../components/searchModal.js"
+import { moveCarousel } from "./moveCarousel.js"
 
 export function eventDelegation() {
   document.addEventListener("click", e => {
@@ -98,6 +99,8 @@ export function eventDelegation() {
         handleListEntries.saveEntry(id, media, status)
       }
     }
+
+    if (e.target.classList.contains("slider-arrow")) moveCarousel(e)
 
   })
 

@@ -38,8 +38,17 @@ footer {
   padding-block: 3vh;
 }
 
-h3 {
+.trending-header * {
+  display: inline;
   color:rgb(201, 201, 201);
+}
+
+.trending-header i {
+  padding-inline: 0.5rem;
+}
+
+h3 {
+  padding-right: 0.5rem;
   cursor: default;
 }
 
@@ -101,5 +110,9 @@ h3 {
 @media (min-width: 1100px) {
   .slider {
     grid-template-columns: repeat(7, 1fr);
+  }
+
+  .trending-header i {
+    display: none
   }
 }
