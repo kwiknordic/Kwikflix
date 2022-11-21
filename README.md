@@ -1,7 +1,7 @@
 # Kwikflix
 
 Live version hittas på:
-  flix.kwik.se
+  https://flix.kwik.se
   
 # Om projektet
 Projektet är en fingervisning på mina JavaScript (ES6+), CSS och HTML-kunskaper.
