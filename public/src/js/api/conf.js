@@ -1,4 +1,5 @@
-import { API_KEY } from "./apiKey.js"
+// Adding it via Netlify's environment variable
+//import { API_KEY } from "./apiKey.js"
 
 export const base = {
   url: "https://api.themoviedb.org/3",
