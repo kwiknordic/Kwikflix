@@ -1,4 +1,5 @@
 # Kwikflix
+Skapat av Mervin Bratic
 
 Live version hittas på:
   https://flix.kwik.se
